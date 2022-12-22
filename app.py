@@ -146,6 +146,19 @@ def update_subj(id):
     return render_template('update_subj.html')
 
 
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    if request.method == 'POST':
+        title = request.form['title']
+        query = {}
+        if not title:
+            query["title"] = {"$regex": title, "$options": 'i'}
+        posts = db_posts.find(query).sort("date", -1)
+    else:
+        posts = db_posts.find().sort("date", -1)
+    return render_template('/search.html', posts=posts)
+
+
 
 
 if __name__ == "__main__":
