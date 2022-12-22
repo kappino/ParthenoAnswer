@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+
+{% if user_level == 1 %}
+<form id="post" method="post">
+    {% with language="C", action="/", submit_text="Create a new category" %}
+    {% include "create_cat.html" %}
+    {% endwith %}
+</form>
+<br><br>
+{% endif %}    
+
+{% if categories != None %}
+<div class="centered-block" style="width: 95%">
+    <table border="1">
+        <tr>
+            <th>Forums</th>
+            <th>Last Topic</th>
+            
+        </tr>
+        {% for category in categories %}
+        <tr>
+            <td class="leftpart"><a href="{{ url_for('view_subc', id=category._id) }}"><b>{{category["cat_name"]}}</b></a><br>{{ category["cat_desc"] }}</td>
+            <td class="rightpart"></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% else %}
+    <h1>No Categories yet!</h1>
+{% endif %}
+    {% if username=='Guest' %}
+        <h3 class="black-text centered-text small-text">
+            You are not logged in, for create a new post you must login.
+            To log-in, please head to the "Account" section.
+        </h3>
+    {% else %}
+        <h3 class="yellow-text centered-text small-text">You are logged in as "{{username}}", as such your username will be associated with the post.</h3>
+    {% endif %}
+</h2>
+<script src="{{ url_for('static', filename='create_cat.js') }}"></script>
+<script src="{{ url_for('static', filename='register_sw.js') }}"></script>
+{% endblock %}

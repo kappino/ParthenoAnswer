@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>To reply other posts and edit/delete your own posts, make sure to sign in!</h1>
+<div id="form_sign">
+    <form id="sign_in" method="post" style="margin-top: 5%">
+        <div>
+            <label >Username</label>
+        <div >
+            <input type="text" name="username" id="username"/>
+        </div>
+        <label>Password</label>
+        <div>
+            <input type="password" name="password" id="password"/>
+        </div>
+        <div>
+            <input type="submit" value="Sign in"/>
+        </div>
+            <div>
+            <label>Don't have an account?</label>
+            <a class=item href="{{ url_for('sign_up') }}">
+                Sign up here!
+            </a>
+            </div>
+        </div>
+        <h2 id="error" class="red-text hidden" style="letter-spacing: normal"></h2>
+        <br><br>
+    </form>
+</div>
+<script src="{{ url_for('static', filename='sign.js') }}"></script>
+{% endblock %}
