@@ -1,0 +1,35 @@
+<form id="search" method="post">
+
+    <nav class="pure-g centered">
+
+        <div class="pure-u-1 pure-u-md-1-3">
+
+            <div class="centered-text medium-text" style="color: var(--#0c5d9c)"> Title </div>
+
+            <input type="text" name="title" id="title" class="post-content centered-block" placeholder="Title"/>
+
+        </div>
+
+        <div class="pure-u-1 pure-u-md-1-3">
+
+            <div class="centered-text medium-text" style="color: var(--#0c5d9c)"> Subject </div>
+
+            <select name="subject" id="subject" class="post-content centered-block">
+
+                {% include "posts.html" %}
+
+            </select>
+
+        </div>
+
+        <div class="pure-u-1 pure-u-md-1-3">
+
+            <div class="centered-text medium-text" style="color: var(--#0c5d9c)">Search</div>
+
+            <input type="submit" class="centered-block post-content" value="Search"/>
+
+        </div>
+
+    </nav><br><br>
+
+</form>
