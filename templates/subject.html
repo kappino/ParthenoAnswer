@@ -1,15 +1,7 @@
 {% extends "base.html" %}
 
 {% block body %}
-
-{% if user_level == 1 %}
-<form id="post" method="post">
-    {% with language="C", action="/", submit_text="Create a new sub category" %}
-    {% include "create_cat.html" %}
-    {% endwith %}
-</form>
-<br><br>
-{% endif %}    
+  
 
 {% if subc != None %}
 <div class="centered-block" style="width: 95%">

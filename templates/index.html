@@ -6,7 +6,7 @@
 
 {% if user_level == 1 %}
 <form id="post" method="post">
-    {% with language="C", action="/", submit_text="Create a new category" %}
+    {% with action="/", submit_text="Create a new category" %}
     {% include "create_cat.html" %}
     {% endwith %}
 </form>
@@ -25,6 +25,9 @@
         <tr>
             <td class="leftpart"><a href="{{ url_for('view_subc', id=category._id) }}"><b>{{category["cat_name"]}}</b></a><br>{{ category["cat_desc"] }}</td>
             <td class="rightpart"></td>
+            {% if user_level == 1 %}
+            <td width="9%"><a class="item" href="{{ url_for('update_subj', id=category._id) }}">Add Subject</a></td>
+            {% endif %}
         </tr>
         {% endfor %}
     </table>

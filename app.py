@@ -17,6 +17,9 @@ db_categories = partansdb["categories"]         #Contiene i corsi divisi per ann
 db_posts = partansdb["posts"]                   #Contiene i post scritti dagli utenti - appartiene ad una categoria ed è scritto da un utente
 
 
+
+
+
 @app.route('/', methods=['GET'])
 def index():
     username = 'Guest'
@@ -24,11 +27,17 @@ def index():
     categories = None
     if db_categories.count() > 0:
         categories = db_categories.find()
-    if 'username' in session and 'username'!= 'Guest':
-        username = session['username']
-        print(username)
-        login_user = db_users.find_one({'username': username})
-        user_level = login_user['user_level']
+        
+    if 'username' in session:
+        try:
+            username = session['username']
+            print(username)
+            login_user = db_users.find_one({'username': username})
+            user_level = login_user['user_level']
+        except TypeError as e:
+            print(e)
+            print("handled successfully")
+
     return render_template('index.html', username=username , categories = categories, user_level = user_level)
       
 
@@ -85,8 +94,7 @@ def create_cat() :
             return "success"
         return "Category already exists!"
     return render_template('create_cat.html')
-def update_cat(cat_name, new_subj):
-    coll.update({'ref': ref}, {'$push': {'tags': new_tag}}, upsert = True)
+
 
 
 @app.route('/sw.js', methods=['GET'])
@@ -108,11 +116,34 @@ def view_post(subject):
 
 @app.route('/view_subc/<string:id>')
 def view_subc(id):
+    print("Id view: ",id)
     subc = db_categories.find_one({"_id": ObjectId(id)})
     subjects = subc['subject']
     if 'username' in session:
+        try:
+            username = session['username']
+            print(username)
+            login_user = db_users.find_one({'username': username})
+            user_level = login_user['user_level']
+        except TypeError as e:
+            print(e)
+            print("handled successfully")
         logged_in = True
-    return render_template('subject.html', logged_in=logged_in, subjects=subjects)    
+    return render_template('subject.html', logged_in=logged_in, subjects=subjects,user_level=user_level)
+
+@app.route('/update_subj/<string:id>', methods=['GET','POST'])
+def update_subj(id):
+    print("Id update:",id)
+    if request.method == 'POST':
+        print("TEST")
+        new_subj = request.form.get('new_subj')
+        print(new_subj)
+        existing_subj = db_categories.find_one({'subject': new_subj})
+        if not existing_subj:
+            db_categories.update_one({'_id': ObjectId(id)}, {'$push': {'subject': new_subj}}, upsert = True)
+            return "success"
+        return "Subject already exists!"
+    return render_template('update_subj.html')
 
 
 
