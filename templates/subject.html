@@ -22,13 +22,13 @@
 {% else %}
     <h1>No Sub Categories yet!</h1>
 {% endif %}
-    {% if username=='Guest' %}
+    {% if not session['username'] %}
         <h3 class="red-text centered-text medium-text">
             You are not logged in, as such your posts will display to public as "Guest".
             To log-in, please head to the "Profile" section.
         </h3>
     {% else %}
-        <h3 class="yellow-text centered-text medium-text">You are logged in as "{{username}}", as such your username will be associated with the post.</h3>
+        <h3 class="yellow-text centered-text medium-text">You are logged in as "{{session['username']}}", as such your username will be associated with the post.</h3>
     {% endif %}
 </h2>
 

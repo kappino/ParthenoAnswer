@@ -1,33 +1,16 @@
 {% extends "base.html" %}
 
 {% block body %}
-        {% if username == Guest %}
         <h1>
-            Welcome Piero!<br>
+            Welcome {{ session['username'] }}!<br>
         </h1>
-        <div id="table"></div>
-        <div class="footer">
-            <div class=" centered-text">
-                <h3>Proceed without an account! Warning: You can't post anything</h3> <br>
-                <a class=item href="{{ url_for('index') }}">Home</a><br><br>
-                <h3>Already a member of community?</h3>
-                <a class=item href="{{ url_for('sign_in') }}">Log In</a>
-                <br><br>
-                <h3>Not a member?</h3>
-                <a class=item href="{{ url_for('sign_up') }}">Sing Up</a>
-            </div>
+        <div id="table">
+            <h1>Matricola: {{ login_user['user']['trattiCarriera'][0]['matricola']  }}</h1>
         </div>
-        
-        {% else %}
-        <h1>
-            Welcome {{username}}!<br>
-        </h1>
-        <div id="table"></div>
         <div class="footer">
             <div class=" centered-text"> <a class=item href="{{ url_for('index') }}">Home</a><br><br>
             <a class=item href="{{ url_for('sign_out') }}">Log Out</a>
             </div>
         </div>
         
-        {% endif %}
 {% endblock %}

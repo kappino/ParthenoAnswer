@@ -5,9 +5,6 @@ $(document).ready(function () {
     $('#sign_in').submit(sign);
 });
 
-$(document).ready(function () {
-    $('#sign_up').submit(sign);
-});
 
 function sign(e) {
     e.preventDefault();

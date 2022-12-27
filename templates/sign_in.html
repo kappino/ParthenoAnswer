@@ -5,7 +5,7 @@
 <div id="form_sign">
     <form id="sign_in" method="post" style="margin-top: 5%">
         <div>
-            <label >Username</label>
+            <label >Codice Fiscale</label>
         <div >
             <input type="text" name="username" id="username"/>
         </div>
@@ -15,14 +15,6 @@
         </div>
         <div>
             <input type="submit" value="Sign in"/>
-        </div>
-            <div>
-            <label>Don't have an account?</label>
-            <a class=item href="{{ url_for('sign_up') }}">
-                Sign up here!
-            </a>
-            </div>
-        </div>
         <h2 id="error" class="red-text hidden" style="letter-spacing: normal"></h2>
         <br><br>
     </form>

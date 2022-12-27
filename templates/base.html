@@ -54,7 +54,7 @@
             <li>
     
             <div id="userbar">
-            {% if username != "Guest" %}
+            {% if session['username'] %}
                 Hello <b>{{session['username']}}</b>. Not you? <a class="item" href="{{ url_for('sign_out')}}">Sign out</a>
             {% else %}
             <div class="dropdown">
@@ -62,10 +62,7 @@
                 <div id="myDropdown" class="dropdown-content">
                     <a href="{{ url_for('sign_in') }}">
                         <p style="letter-spacing: normal">Sing In</p>
-                    </a>    
-                    <a href="{{ url_for('sign_up') }}">
-                        <p style="letter-spacing: normal">Sing Up</p>
-                    </a>
+                    </a> 
                 </div>
           </div>
           {% endif %}

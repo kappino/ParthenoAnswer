@@ -4,7 +4,7 @@
 
 
 
-{% if user_level == 1 %}
+{% if session['user_level'] == 1 %}
 <form id="post" method="post">
     {% with action="/", submit_text="Create a new category" %}
     {% include "create_cat.html" %}
@@ -25,7 +25,7 @@
         <tr>
             <td class="leftpart"><a href="{{ url_for('view_subc', id=category._id) }}"><b>{{category["cat_name"]}}</b></a><br>{{ category["cat_desc"] }}</td>
             <td class="rightpart"></td>
-            {% if user_level == 1 %}
+            {% if session['user_level'] == 1 %}
             <td width="9%"><a class="item" href="{{ url_for('update_subj', id=category._id) }}">Add Subject</a></td>
             {% endif %}
         </tr>
@@ -35,13 +35,13 @@
 {% else %}
     <h1>No Categories yet!</h1>
 {% endif %}
-    {% if username=='Guest' %}
+    {% if not session['username'] %}
         <h3 class="black-text centered-text small-text">
             You are not logged in, for create a new post you must login.
             To log-in, please head to the "Account" section.
         </h3>
     {% else %}
-        <h3 class="yellow-text centered-text small-text">You are logged in as "{{username}}", as such your username will be associated with the post.</h3>
+        <h3 class="yellow-text centered-text small-text">You are logged in as "{{session['username']}}", as such your username will be associated with the post.</h3>
     {% endif %}
 </h2>
 <script src="{{ url_for('static', filename='create_cat.js') }}"></script>
