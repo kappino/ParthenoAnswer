@@ -23,12 +23,15 @@ db_posts = partansdb["posts"]                   #Contiene i post scritti dagli u
 
 #PROVA CANCELLARE
 
+
+
+#FINE PROVA
+
 def basic_auth(username, password):
     token = b64encode(f"{username}:{password}".encode('utf-8')).decode("ascii")
     return f'Basic {token}'
 
 
-#FINE PROVA
 @app.route('/', methods=['GET'])
 def index():
     categories = None
