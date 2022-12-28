@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
 {% block body %}
+<!-- Questo è un metodo per poter prendere l'ultima carriera dello studente ignorando quelle cessate o secondarie tipo 24cfu -->
         <h1>
             Welcome {{ session['username'] }}!<br>
         </h1>
         <div id="table">
-            <h1>Matricola: {{ login_user['user']['trattiCarriera'][0]['matricola']  }}</h1>
+            <h1>Matricola: {{ login_user['user']['trattiCarriera'][login_user['user']['trattiCarriera']|length-1]['matricola'] }}</h1>
+            <h1></h1>
         </div>
         <div class="footer">
             <div class=" centered-text"> <a class=item href="{{ url_for('index') }}">Home</a><br><br>
