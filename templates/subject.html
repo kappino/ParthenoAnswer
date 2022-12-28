@@ -15,6 +15,7 @@
         <tr>
             <td class="leftpart"><a href="{{ url_for('view_post', subject=subject) }}"> <b>{{ subject }}</b></a></td>
             <td class="rightpart"></td>
+            <td width="9%"><a class="item" href="{{ url_for('create_posts', subject=subject) }}">Add Post</a></td>
         </tr>
         {% endfor %}
     </table>

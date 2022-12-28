@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+<form id="post" method="post">
+    <div>
+        Subject Name
+        <input type="text" name="post_title" id="post_title" placeholder="New post title.." spellcheck="false"  value="{{ post_title }}">
+        <input type="text" name="post_content" id="post_content" placeholder="New post_content.." spellcheck="false"  value="{{ post_content }}">
+        <input class=item type="submit" value="Add">
+        <h2 id="success" class="hidden" style="color: var(--yellow)">Successfully submitted!</h2>
+        <h2 id="failure" class="hidden" style="color: var(--red)">Failure to submit! </h2>
+        </div>
+</form>
+<script src="{{ url_for('static', filename='create_post.js') }}"></script>
+{% endblock %}

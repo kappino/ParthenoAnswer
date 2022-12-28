@@ -59,7 +59,7 @@ def sign_in():
         login_user = db_users.find_one({'username': username})
         if login_user:
             if bcrypt.checkpw(password.encode('utf-8'), login_user['password']):
-                session['username'] = login_user["user"]["firstName"].title()
+                session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                 session['cf'] = username
                 session['user_level'] = login_user['user_level']
                 return jsonify("Utente trovato, Bentornato!"),200
@@ -73,7 +73,7 @@ def sign_in():
                     user = r.json()['user']
                     hashed_pass = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
                     db_users.insert_one({'username': username, 'password': hashed_pass, 'user_level': 0, 'user': user})
-                    session['username'] = login_user["user"]["firstName"].title()
+                    session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                     session['user_level'] = login_user['user_level']
                     return jsonify("Utente trovato, Benvenuto!"),200
                 else:
@@ -151,7 +151,16 @@ def search():
         posts = db_posts.find().sort("date", -1)
     return render_template('/search.html', posts=posts)
 
-
+@app.route('/create_posts/<string:subject>', methods=['GET','POST'])
+def create_posts(subject):
+    print("Id create_post", subject)
+    if request.method == 'POST':
+        print("TEST")
+        post_title = request.form.get('post_title')
+        post_content = request.form.get('post_content')
+        db_posts.insert_one({'title': post_title, 'content': post_content, 'author': session['username'], 'date': datetime.now(timezone.utc), 'subject': subject})
+        return "success"
+    return render_template('create_posts.html') 
 
 
 if __name__ == "__main__":
