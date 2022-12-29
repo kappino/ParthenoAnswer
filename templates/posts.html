@@ -22,7 +22,7 @@
         {% for post in posts  %}
         <tr>
             <td class="leftpart"><b>{{ post["title"] }}</b><br>{{ post["content"] }}</td>
-            <td class="rightpart">{{ post["author"] }} <br> {{post["date"]}}</bv></td>
+            <td class="rightpart"><b>{{ post["author"] }}</b> <br> {{post["date"]}}</td>
         </tr>
         {% endfor %}
     </table>
