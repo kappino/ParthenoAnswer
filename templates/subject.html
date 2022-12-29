@@ -18,7 +18,11 @@
             {% else %}
             <td class="leftpart"><b>{{ subject }}</b></td>
             {% endif %}
-            <td class="rightpart"> {{ last_post }} </td>
+            {% if last_post[loop.index-1]["title"] %}
+            <td class="rightpart"> {{ last_post[loop.index-1]["title"] }} </td>
+            {% else %}
+            <td class="rightpart"> No posts yet... </td>
+            {% endif %}
             {% if session['username'] %}
             <td width="9%"><a class="item" href="{{ url_for('create_posts', subject=subject) }}">Add Post</a></td>
             {% endif %}

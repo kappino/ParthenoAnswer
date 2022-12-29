@@ -36,9 +36,23 @@ def basic_auth(username, password):
 def index():
     categories = None
     if db_categories.count() > 0:
-        categories = db_categories.find()
-
-    return render_template('index.html', categories = categories)
+        categories = list(db_categories.find())
+        last_post=[]
+        for category in categories:
+            try:
+                print(category["_id"])
+                subc = db_categories.find_one({"_id": ObjectId(category["_id"])})
+                subjects = subc['subject']
+                for subject in subjects:
+                    temp = db_posts.find_one({'subject': subject}, sort=[('date',-1)])
+                    if temp:
+                        last_post.append(temp)
+                    
+            except:
+                print("Errore!")
+        for post in last_post:
+            print("Post:",post)
+    return render_template('index.html', categories = categories, last_post=last_post)
       
 
 @app.route('/profile', methods=['GET'])
@@ -123,9 +137,9 @@ def view_subc(id):
     print("Id view: ",id)
     subc = db_categories.find_one({"_id": ObjectId(id)})
     subjects = subc['subject']
-    i=0
+    last_post=[]
     for subject in subjects:
-        last_post = db_posts.find_one({'subject': subject}, sort=[('date',-1)])
+        last_post.append(db_posts.find_one({'subject': subject}, sort=[('date',-1)]))
         print("Post:",last_post)
     return render_template('subject.html', subjects=subjects, last_post=last_post)
 
@@ -149,15 +163,22 @@ def search():
     if request.method == 'POST':
         search = request.form['search']
         select = request.form.get('id_search')
-       
+        print("Search: ", search)
+        print("Select: ", select)
+
         if not search:
             return 'emptySearch'
         if  select == "topics":
-            posts = db_posts.find({'title': search}).sort("date", -1)
+            posts = list(db_posts.find({'title': {"$regex":search, "$options": "si" }}).sort("date", -1))
+            print(posts)
+            return render_template('search.html', posts=posts)
         else:
-            posts = db_posts.find({'author': search}).sort("date", -1)
-
-    return render_template('search.html', posts=posts)
+            
+            posts = list(db_posts.find({'author': {"$regex":search, "$options": "si"  }}).sort("date", -1))
+            print(posts)
+            return render_template('search.html', posts=posts)
+    return render_template('index.html')
+    
     
 
 @app.route('/create_posts/<string:subject>', methods=['GET','POST'])

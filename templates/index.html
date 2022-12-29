@@ -24,7 +24,8 @@
         {% for category in categories %}
         <tr>
             <td class="leftpart"><a href="{{ url_for('view_subc', id=category._id) }}"><b>{{category["cat_name"]}}</b></a><br>{{ category["cat_desc"] }}</td>
-            <td class="rightpart"></td>
+            <td class="rightpart"><b>{{ last_post[loop.index-1]["title"] }} </b> <br> {{ last_post[loop.index-1]['subject'] }}</td>
+            
             {% if session['user_level'] == 1 %}
             <td width="9%"><a class="item" href="{{ url_for('update_subj', id=category._id) }}">Add Subject</a></td>
             {% endif %}
