@@ -9,10 +9,10 @@ $(document).ready(function () {
 function renderQueryTableInElement(jQueryTableIndex) {
     $.ajax({
         type: 'GET',
-        url: '/render_query_table',
+        url: '/search',
         data: {
-            title: $("#title").val(),
-            subject: $("#subject").val()
+            search: $("#search").val(),
+            id_search: $("#id_search").val()
         },
         success: (data) => {
             $(jQueryTableIndex).html(data);

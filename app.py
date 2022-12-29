@@ -147,14 +147,18 @@ def update_subj(id):
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == 'POST':
-        title = request.form['title']
-        query = {}
-        if not title:
-            query["title"] = {"$regex": title, "$options": 'i'}
-        posts = db_posts.find(query).sort("date", -1)
-    else:
-        posts = db_posts.find().sort("date", -1)
-    return render_template('/search.html', posts=posts)
+        search = request.form['search']
+        select = request.form.get('id_search')
+       
+        if not search:
+            return 'emptySearch'
+        if  select == "topics":
+            posts = db_posts.find({'title': search}).sort("date", -1)
+        else:
+            posts = db_posts.find({'author': search}).sort("date", -1)
+
+    return render_template('search.html', posts=posts)
+    
 
 @app.route('/create_posts/<string:subject>', methods=['GET','POST'])
 def create_posts(subject):
