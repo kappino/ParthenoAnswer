@@ -112,6 +112,7 @@ def sw():
 def view_post(subject):
     print(subject)
     posts = db_posts.find({'subject': subject })
+
     logged_in = False
     if 'username' in session:
         logged_in = True
@@ -122,7 +123,9 @@ def view_subc(id):
     print("Id view: ",id)
     subc = db_categories.find_one({"_id": ObjectId(id)})
     subjects = subc['subject']
-    return render_template('subject.html', subjects=subjects)
+    for subject in subjects:
+        last_post = db_posts.find_one({'subject': subjects})
+    return render_template('subject.html', subjects=subjects, last_post=last_post)
 
 @app.route('/update_subj/<string:id>', methods=['GET','POST'])
 def update_subj(id):
@@ -158,7 +161,7 @@ def create_posts(subject):
         print("TEST")
         post_title = request.form.get('post_title')
         post_content = request.form.get('post_content')
-        db_posts.insert_one({'title': post_title, 'content': post_content, 'author': session['username'], 'date': datetime.now(timezone.utc), 'subject': subject})
+        db_posts.insert_one({'title': post_title, 'content': post_content, 'author': session['username'],'subject': subject, 'date': datetime.now().strftime("%Y-%m-%d %H:%M")})
         return "success"
     return render_template('create_posts.html') 
 
