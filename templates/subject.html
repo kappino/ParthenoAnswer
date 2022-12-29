@@ -13,9 +13,15 @@
         </tr>
         {% for subject in subjects  %}
         <tr>
+            {% if session['username'] %}
             <td class="leftpart"><a href="{{ url_for('view_post', subject=subject) }}"> <b>{{ subject }}</b></a></td>
-            <td class="rightpart"></td>
+            {% else %}
+            <td class="leftpart"><b>{{ subject }}</b></td>
+            {% endif %}
+            <td class="rightpart"> {{ last_post }} </td>
+            {% if session['username'] %}
             <td width="9%"><a class="item" href="{{ url_for('create_posts', subject=subject) }}">Add Post</a></td>
+            {% endif %}
         </tr>
         {% endfor %}
     </table>

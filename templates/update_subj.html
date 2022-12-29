@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block body %}
+
+{% if session['user_level']==1 %}
 <form id="post" method="post">
     <div>
         Subject Name
@@ -10,5 +12,7 @@
         <h2 id="failure" class="hidden" style="color: var(--red)">Failure to submit! </h2>
         </div>
 </form>
+{% else %}
+<h1>You have no permission!</h1>
 <script src="{{ url_for('static', filename='update_subject.js') }}"></script>
 {% endblock %}
