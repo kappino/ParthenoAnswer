@@ -187,7 +187,11 @@ def create_posts(subject):
     if request.method == 'POST':
         print("TEST")
         post_title = request.form.get('post_title')
+        if not post_title:
+            return "Title cannot be blank"    
         post_content = request.form.get('post_content')
+        if not post_content:
+            return "Content cannot be blank"
         db_posts.insert_one({'title': post_title, 'content': post_content, 'author': session['username'],'subject': subject, 'date': datetime.now().strftime("%Y-%m-%d %H:%M")})
         return "success"
     return render_template('create_posts.html') 
