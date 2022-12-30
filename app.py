@@ -46,12 +46,15 @@ def index():
                 for subject in subjects:
                     temp = db_posts.find_one({'subject': subject}, sort=[('date',-1)])
                     if temp:
+                        print("Temp: ",temp)
                         last_post.append(temp)
+                        break
+                    else:
+                        last_post.append(None)
+                        break
                     
             except:
                 print("Errore!")
-        for post in last_post:
-            print("Post:",post["title"])
     return render_template('index.html', categories = categories, last_post=last_post)
       
 
@@ -107,7 +110,7 @@ def create_cat() :
         cat_desc = request.form.get('cat_desc')
         existing_cat = db_categories.find_one({'cat_name': cat_name})
         if not existing_cat:
-            db_categories.insert_one({'cat_name': cat_name, 'cat_desc': cat_desc,'subject': [None]})
+            db_categories.insert_one({'cat_name': cat_name, 'cat_desc': cat_desc,'subject': ["None"]})
             return "success"
         return "Category already exists!"
     return render_template('create_cat.html')
@@ -150,14 +153,17 @@ def view_subc(id):
 
 @app.route('/update_subj/<string:id>', methods=['GET','POST'])
 def update_subj(id):
-    print("Id update:",id)
     if request.method == 'POST':
-        print("TEST")
         new_subj = request.form.get('new_subj')
-        print(new_subj)
         existing_subj = db_categories.find_one({'subject': new_subj})
         if not existing_subj:
-            db_categories.update_one({'_id': ObjectId(id)}, {'$push': {'subject': new_subj}}, upsert = True)
+            test = db_categories.find_one({'_id': ObjectId(id)})
+            print ("Test: ",test)
+            if test["subject"] == ["None"]:
+                db_categories.update({"_id": ObjectId(id)},{ "$set": { "subject.0" : new_subj } }
+)
+            else:    
+                db_categories.update_one({'_id': ObjectId(id)}, {'$push': {'subject': new_subj}}, upsert = True)
             return "success"
         return "Subject already exists!"
     return render_template('update_subj.html')
