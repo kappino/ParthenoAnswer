@@ -51,7 +51,7 @@ def index():
             except:
                 print("Errore!")
         for post in last_post:
-            print("Post:",post)
+            print("Post:",post["title"])
     return render_template('index.html', categories = categories, last_post=last_post)
       
 
@@ -138,9 +138,10 @@ def view_subc(id):
     subc = db_categories.find_one({"_id": ObjectId(id)})
     subjects = subc['subject']
     last_post=[]
-    for subject in subjects:
-        last_post.append(db_posts.find_one({'subject': subject}, sort=[('date',-1)]))
-        print("Post:",last_post)
+    if subjects:
+        for subject in subjects:
+            last_post.append(db_posts.find_one({'subject': subject}, sort=[('date',-1)]))
+            print("Post:",last_post)
     return render_template('subject.html', subjects=subjects, last_post=last_post)
 
 @app.route('/update_subj/<string:id>', methods=['GET','POST'])
