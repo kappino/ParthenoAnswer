@@ -24,7 +24,7 @@
         {% for category in categories %}
         <tr>
             <td class="leftpart"><a href="{{ url_for('view_subc', id=category._id) }}"><b>{{category["cat_name"]}}</b></a><br>{{ category["cat_desc"] }}</td>
-            {% if last_post[loop.index0]["subject"]%}
+            {% if last_post[loop.index0]["subject"][0]!=None %}
             <td class="rightpart"><b>{{ last_post[loop.index0]["title"] }} </b> <br> {{ last_post[loop.index0]['subject'] }}</td>
             {% else %}
             <td class="rightpart"><b>{{ last_post[loop.index0]["title"] }} </b> <br> No subject yet..</td>

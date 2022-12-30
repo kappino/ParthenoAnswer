@@ -107,7 +107,7 @@ def create_cat() :
         cat_desc = request.form.get('cat_desc')
         existing_cat = db_categories.find_one({'cat_name': cat_name})
         if not existing_cat:
-            db_categories.insert_one({'cat_name': cat_name, 'cat_desc': cat_desc,'subject': []})
+            db_categories.insert_one({'cat_name': cat_name, 'cat_desc': cat_desc,'subject': [None]})
             return "success"
         return "Category already exists!"
     return render_template('create_cat.html')
