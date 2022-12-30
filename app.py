@@ -216,7 +216,7 @@ def comments(id):
         if not comments_content:
             return "comment cannot be blank"    
         comments_content = request.form.get('comments_content')
-        db_posts.insert_one({'content': comments_content, 'author': session['username'],'subject': subject, 'date': datetime.now().strftime("%Y-%m-%d %H:%M")})
+        db_posts.insert_one({'content': comments_content, 'author': session['username'], 'date': datetime.now().strftime("%Y-%m-%d %H:%M")})
         return "success"
     return render_template('comments.html') 
 
