@@ -210,15 +210,15 @@ def create_posts(subject):
 @app.route('/comments/<string:id>', methods=['GET','POST'])
 def comments(id):
     print("Id comments", id)
+    post = db_posts.find_one({"_id": ObjectId(id)})
     if request.method == 'POST':
         print("TEST")
         comments_content = request.form.get('comments_content')
         if not comments_content:
             return "comment cannot be blank"    
-        comments_content = request.form.get('comments_content')
-        db_posts.insert_one({'content': comments_content, 'author': session['username'], 'date': datetime.now().strftime("%Y-%m-%d %H:%M")})
+        db_posts.update_one({ '_id': ObjectId(id) }, { '$push': { 'replies': { 'author' : session['username'],'content' : comments_content, 'date' :  datetime.now().strftime("%Y-%m-%d %H:%M") } } } )
         return "success"
-    return render_template('comments.html') 
+    return render_template('comments.html', post=post) 
 
 
 if __name__ == "__main__":

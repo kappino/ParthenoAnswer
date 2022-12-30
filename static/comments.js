@@ -11,7 +11,7 @@ $(document).ready(function () {
         type: 'POST',
         url: window.location.href,
         data: {
-        comments_content: $("#post_content").val(),
+        comments_content: $("#comments_content").val(),
     },
     success: (result) => {
         $('#success').hide();

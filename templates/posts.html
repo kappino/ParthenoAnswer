@@ -21,7 +21,7 @@
         </tr>
         {% for post in posts  %}
         <tr>
-            <td class="leftpart"><b>{{ post["title"] }}</b><br>{{ post["content"] }}</td>
+            <td class="leftpart"><a href="{{ url_for('comments', id=post['_id']) }}"><b>{{ post["title"] }}</b></a><br>{{ post["content"] }}</td>
             <td class="rightpart"><b>{{ post["author"] }}</b> <br> {{post["date"]}}</td>
         </tr>
         {% endfor %}
