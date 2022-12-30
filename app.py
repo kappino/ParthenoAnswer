@@ -128,8 +128,7 @@ def sw():
 @app.route('/view_post/<string:subject>')
 def view_post(subject):
     print(subject)
-    posts = db_posts.find({'subject': subject })
-
+    posts = list(db_posts.find({'subject': subject }))
     logged_in = False
     if 'username' in session:
         logged_in = True
