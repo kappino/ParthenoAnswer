@@ -198,6 +198,19 @@ def create_posts(subject):
         return "success"
     return render_template('create_posts.html') 
 
+@app.route('/comments/<string:id>', methods=['GET','POST'])
+def comments(id):
+    print("Id comments", id)
+    if request.method == 'POST':
+        print("TEST")
+        comments_content = request.form.get('comments_content')
+        if not comments_content:
+            return "comment cannot be blank"    
+        comments_content = request.form.get('comments_content')
+        db_posts.insert_one({'content': comments_content, 'author': session['username'],'subject': subject, 'date': datetime.now().strftime("%Y-%m-%d %H:%M")})
+        return "success"
+    return render_template('comments.html') 
+
 
 if __name__ == "__main__":
     app.run(debug=True)
