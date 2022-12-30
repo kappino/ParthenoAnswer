@@ -19,3 +19,6 @@ To run the web app locally, follow these instructions:
 
 Link to personal Github repository:
 https://github.com/nellogen/ParthenoAnswer
+
+Link to personal presentation: 
+https://docs.google.com/presentation/d/1acokhrSv6ViCC0ifGJNpaGh7cAvWs-Lu2_-upTQE1tA/edit#slide=id.p
