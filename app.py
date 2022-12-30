@@ -107,7 +107,7 @@ def create_cat() :
         cat_desc = request.form.get('cat_desc')
         existing_cat = db_categories.find_one({'cat_name': cat_name})
         if not existing_cat:
-            db_categories.insert_one({'cat_name': cat_name, 'cat_desc': cat_desc})
+            db_categories.insert_one({'cat_name': cat_name, 'cat_desc': cat_desc,'subject': []})
             return "success"
         return "Category already exists!"
     return render_template('create_cat.html')
@@ -136,12 +136,13 @@ def view_post(subject):
 def view_subc(id):
     print("Id view: ",id)
     subc = db_categories.find_one({"_id": ObjectId(id)})
-    subjects = subc['subject']
+    print("Subc: ",subc)
+    if subc['subject']:
+        subjects = subc['subject']
     last_post=[]
-    if subjects:
-        for subject in subjects:
-            last_post.append(db_posts.find_one({'subject': subject}, sort=[('date',-1)]))
-            print("Post:",last_post)
+    for subject in subjects:
+        last_post.append(db_posts.find_one({'subject': subject}, sort=[('date',-1)]))
+        print("Post:",last_post)
     return render_template('subject.html', subjects=subjects, last_post=last_post)
 
 @app.route('/update_subj/<string:id>', methods=['GET','POST'])
