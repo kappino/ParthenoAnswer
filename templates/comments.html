@@ -1,6 +1,27 @@
 {% extends "base.html" %}
 
 {% block body %}
+
+<div class="centered-block" style="width: 95%">
+    <table border="1">
+        <tr>
+            <th>Post</th>
+            <th>Created by</th>
+            
+        </tr>
+        <tr>
+            <td class="leftpart"><b>{{ post["title"] }}</b><br>{{ post["content"] }}</td>
+            <td class="rightpart"><b>{{ post["author"] }}</b> <br> {{post["date"]}}</td>
+        </tr>
+        {% for post in posts  %}
+        <tr>
+            <td class="leftpart"><b>{{ post["title"] }}</b><br>{{ post["content"] }}</td>
+            <td class="rightpart"><b>{{ post["author"] }}</b> <br> {{post["date"]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
 <form id="post" method="post">
     <div>
         Subject Name
