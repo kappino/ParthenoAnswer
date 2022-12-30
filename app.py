@@ -136,13 +136,16 @@ def view_post(subject):
 def view_subc(id):
     print("Id view: ",id)
     subc = db_categories.find_one({"_id": ObjectId(id)})
-    print("Subc: ",subc)
-    if subc['subject']:
+    if subc['subject'][0] != None:
         subjects = subc['subject']
-    last_post=[]
-    for subject in subjects:
-        last_post.append(db_posts.find_one({'subject': subject}, sort=[('date',-1)]))
-        print("Post:",last_post)
+        last_post=[]
+        for subject in subjects:
+            last_post.append(db_posts.find_one({'subject': subject}, sort=[('date',-1)]))
+            print("Post:",last_post)
+    else:
+        subjects = None
+        last_post = None
+
     return render_template('subject.html', subjects=subjects, last_post=last_post)
 
 @app.route('/update_subj/<string:id>', methods=['GET','POST'])

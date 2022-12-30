@@ -3,7 +3,7 @@
 {% block body %}
   
 
-{% if subc != None %}
+{% if subjects %}
 <div class="centered-block" style="width: 95%">
     <table border="1">
         <tr>
@@ -31,7 +31,7 @@
     </table>
 </div>
 {% else %}
-    <h1>No Sub Categories yet!</h1>
+    <h1>No Subjects yet!</h1>
 {% endif %}
     {% if not session['username'] %}
         <h3 class="red-text centered-text medium-text">
