@@ -1,18 +1,17 @@
 :root  {
-    --black: #c4c4c4;
+    --light_grey: #c4c4c4;
     --grey: #707070;
-    --grey_darker: #0c5d9c;
-    --yellow:#dfdfdf;
-    --yellow_darker: ##0c5d9c;
-    --white:#050505;
+    --white:#dfdfdf;
+    --blue: #0c5d9c;
+    --black:#050505;
     --red: #e00a0a;
 }
 body {
     margin: 0 auto;
     min-height: 100%;
     font-family: serif;
-    background-color: var(--black);
-    color: var(--white);
+    background-color: var(--light_grey);
+    color: var(--black);
 }
 
 #logo {
@@ -33,7 +32,7 @@ h1, h2 {
     text-align: center;
 }
 .yellow-text {
-    color: var(--yellow);
+    color: var(--white);
 }
 .red-text {
     color:var(--red);
@@ -48,7 +47,7 @@ h1, h2 {
 }
 .post-content {
     font-size: 1em;
-    color:var(--black);
+    color:var(--light_grey);
 }
 .big-text {
     font-size: 2em;
@@ -85,16 +84,16 @@ h1, h2 {
 }
 
 .pure-table {
-    border: 3px solid var(--white)
+    border: 3px solid var(--black)
 }
 .pure-table thead {
     background-color: transparent;
-    border: 3px solid var(--white);
-    color: var(--yellow);
+    border: 3px solid var(--black);
+    color: var(--white);
 }
 .pure-table th, .pure-table tr, .pure-table td {
-    border-left: 3px solid var(--white);
-    border-right: 3px solid var(--white);
+    border-left: 3px solid var(--black);
+    border-right: 3px solid var(--black);
 }
 
 .pure-g {
@@ -121,18 +120,18 @@ h1, h2 {
 }
 code {
     text-align: left;
-    border: 3px solid var(--yellow_darker);
+    border: 3px solid var(--blue);
     font-size: 0.9em;
 }
 a {
     text-decoration: underline;
-    color: var(--white);
+    color: var(--black);
 }
 .no-decoration {
     text-decoration: none;
 }
 a:hover {
-    color: var(--yellow);
+    color: var(--white);
 }
 
 /****** Style Star Rating Widget *****/
@@ -359,7 +358,7 @@ text-align: center;
   
   /* Links inside the dropdown */
   .dropdown-content a {
-	color: black;
+	color: var(--black);
 	font-size: 14px;
 	text-decoration: none;
 	display: block;
