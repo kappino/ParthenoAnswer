@@ -1,14 +1,11 @@
-let cacheName = "Code Snip";
+let cacheName = "post";
 
 let filesToCache = [
     "static/jquery-3.6.0.min.js",
-    "static/post_snippet.js",
     "static/manifest.json",
-    "static/search_snippets.js",
+    "static/search_posts.js",
     "static/styles.css",
-    "static/update_snippet.js",
-    "static/user_snippets.js",
-    "static/view.js"
+    "static/update_subject.js",
 ];
 
 // Start the service worker and cache all of the static app's content.

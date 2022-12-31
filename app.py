@@ -177,7 +177,7 @@ def search():
         print("Select: ", select)
 
         if not search:
-            return 'emptySearch'
+            return render_template('index.html')
         if  select == "topics":
             posts = list(db_posts.find({'title': {"$regex":search, "$options": "si" }}).sort("date", -1))
             print(posts)

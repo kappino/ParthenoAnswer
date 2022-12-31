@@ -31,7 +31,7 @@ h1 {
 h1, h2 {
     text-align: center;
 }
-.yellow-text {
+.white-text {
     color: var(--white);
 }
 .red-text {
@@ -97,7 +97,7 @@ h1, h2 {
 }
 
 .pure-g {
-  background-color: #0c5d9c;
+  background-color: var(--blue);
 }
 
 .centered {
@@ -110,7 +110,7 @@ h1, h2 {
 	font-family: Arial;
 	font-size: 1em;
 	text-align: center;
-	color: #fff;
+	color: var(--white);
 	background-color: var(--blue);
 	position: fixed;
 	left: 0px;
