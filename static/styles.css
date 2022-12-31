@@ -226,6 +226,22 @@ td {
 	font-size: 75%;
 }
 
+
+.back_button {
+	background-color: #000681ce;
+	border: 1px solid rgba(0, 51, 102, 0.735);
+	color: #FFF;
+	font-family: Arial;
+	padding: 4px;
+	border-radius: 8px;
+	text-decoration: none;
+	font-size: 75%;
+	position: relative;
+	right: 10px;
+	top: 20px;
+}
+
+
 #form_sign {
 	display: flex;
 	align-items: center;

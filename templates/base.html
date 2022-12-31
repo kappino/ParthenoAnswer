@@ -55,7 +55,7 @@
     
             <div id="userbar">
             {% if session['username'] %}
-                Hello <b>{{session['username']}}</b>. Not you? <a class="item" href="{{ url_for('sign_out')}}">Sign out</a>
+                Hello <b>{{session['username']}}</b>. Not you? <button class="item" href="{{ url_for('sign_out')}}">Sign out</button>
             {% else %}
             <div class="dropdown">
                 <button onclick="myFunction()" class="dropbtn"><i class="fa fa-fw fa-user"></i>Account</button>
@@ -69,7 +69,7 @@
             </div>
             </li>
             <li>
-                <form><button type="button" class="item"  
+                <form><button type="button" class="back_button"  
                     onClick="history.back();" >go back</button>
                 </form>
             </li>
