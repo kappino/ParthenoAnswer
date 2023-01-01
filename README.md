@@ -1,5 +1,5 @@
 # ParthenoAnswer
-This is a project for "web technologies" exam at the University of Naples Parthenope. The authors of this project are Aiello Riccardo, Esposito Crescenzo and the student representative Genovese Aniello.
+This is a project for "web technologies" exam at the Parthenope University of Naples. The authors of this project are Aiello Riccardo, Esposito Crescenzo and the student representative Genovese Aniello.
 
 HOW TO RUN: 
 To run the web app locally, follow these instructions:
