@@ -19,11 +19,6 @@ db_users = partansdb["users"]                   #Contiene dati utenti - collegat
 db_categories = partansdb["categories"]         #Contiene i corsi divisi per anni - collegati a post (post divisi per materia quindi divisi per anno)
 db_posts = partansdb["posts"]                   #Contiene i post scritti dagli utenti - appartiene ad una categoria ed è scritto da un utente
 
-
-
-
-#FINE PROVA
-
 def basic_auth(username, password):
     token = b64encode(f"{username}:{password}".encode('utf-8')).decode("ascii")
     return f'Basic {token}'
