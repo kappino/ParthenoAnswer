@@ -13,16 +13,10 @@ body {
     background-color: var(--light_grey);
     color: var(--black);
 }
-
 #logo {
 	float: left;
 	width: 240px;
 	height: auto;	
-}
-
-
-.hidden {
-    visibility: hidden;
 }
 h1 {
     font-size: 1.8em;
@@ -40,10 +34,7 @@ h1, h2 {
     text-align: center;
     align-self: center;
 }
-.very-small-top-bottom-margin {
-    margin-block-start: 0.5em;
-    margin-block-end: 0.5em;
-}
+
 .post-content {
     font-size: 1em;
     color:var(--light_grey);
@@ -81,24 +72,6 @@ h1, h2 {
 	text-align: left;
 	width: 100%;				
 }
-
-.pure-table {
-    border: 3px solid var(--black)
-}
-.pure-table thead {
-    background-color: transparent;
-    border: 3px solid var(--black);
-    color: var(--white);
-}
-.pure-table th, .pure-table tr, .pure-table td {
-    border-left: 3px solid var(--black);
-    border-right: 3px solid var(--black);
-}
-
-.pure-g {
-  background-color: var(--blue);
-}
-
 .centered {
   justify-content: center;
 }
@@ -133,8 +106,7 @@ a:hover {
     color: var(--white);
 }
 
-/* begin table styles */
-table {
+table {/* begin table styles */
 	border:5px var(--blue);
 	border-radius: 8px;
 	overflow: hidden;
@@ -143,28 +115,23 @@ table {
 	border-collapse:collapse;
 	width: 100%;
 }
-
 table a {
 	color: var(--black);
 	text-decoration: none;
 }
-
 table a:hover {
 	color:var(--black);
 	text-decoration: none;
 }
-
 th {
 	background-color: var(--blue);
 	color: var(--white);
 	text-align: left;
 }
-
 td {
 	text-align: left;
 	padding: 5px;
 }
-
 
 /* Menu styles */
 .item {
@@ -177,8 +144,6 @@ td {
 	text-decoration: none;
 	font-size: 75%;
 }
-
-
 .back_button {
 	background-color: var(--blue);
 	border: 1px solid var(--blue);
@@ -192,15 +157,6 @@ td {
 	right: 10px;
 	top: 20px;
 }
-
-
-#form_sign {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-
 #Ricerca {
 	margin-left: 110px;
 	margin-top: 25px;
@@ -211,7 +167,6 @@ td {
 	border-radius: 60px;
 	backdrop-filter: blur(4px) saturate(180%);
 }
-
 #Ricerca input {
 	background: transparent;
 	flex: 1;
@@ -244,8 +199,6 @@ td {
 .fa-search {
 	color: var(--white);
 }
-
-
 #menu {
 border-top-right-radius: 12px;
 border-top-left-radius: 12px;
@@ -258,22 +211,16 @@ padding:0 30px;
 background-color: var(--white);
 text-align: center;
 }
-
-#menu a:hover {
-	background-color: var(--blue);
-}
 #menu ul {
 	width: 100%;
 	margin: 0 auto;
 	list-style-type: none;
 	display: inline-block;
 }
-
 #menu li {
 	float: left;
 	padding: 0px;
 }
-
 #userbar {
 	padding: 25px;
 	margin-left: 120px;
@@ -281,51 +228,3 @@ text-align: center;
 	float: right;
 	width: 250px;
 }
-
-/* Dropdown Button */
-.dropbtn {
-	background-color: #000681ce;
-	border: 1px solid rgba(0, 51, 102, 0.735);
-	color: #FFF;
-	font-family: Arial;
-	padding: 4px;
-	border-radius: 8px;
-	text-decoration: none;
-	cursor: pointer;
-  }
-  
-  /* Dropdown button on hover & focus */
-  .dropbtn:hover, .dropbtn:focus {
-	background-color: #9a00c1;
-	border-radius: 8px;
-  }
-  
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
-	position: relative;
-	display: inline-block;
-  }
-  
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-	display: none;
-	border-radius: 8px;
-	position: absolute;
-	background-color: #f1f1f1;
-	min-width: 90px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	z-index: 2;
-  }
-  
-  /* Links inside the dropdown */
-  .dropdown-content a {
-	color: var(--black);
-	font-size: 14px;
-	text-decoration: none;
-	display: block;
-  }
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #ddd;}
-  
-  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-  .show {display:block;}
