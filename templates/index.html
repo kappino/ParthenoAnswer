@@ -17,8 +17,8 @@
 <div class="centered-block" style="width: 95%">
     <table border="1">
         <tr>
-            <th>Forums</th>
-            <th>Last Topic</th>
+            <th>&nbsp;Forums</th>
+            <th>&nbsp;Last Topic</th>
             <th></th>
         </tr>
         {% for category in categories %}
@@ -45,7 +45,7 @@
             To log-in, please head to the "Account" section.
         </h3>
     {% else %}
-        <h3 class="yellow-text centered-text small-text">You are logged in as "{{session['username']}}", as such your username will be associated with the post.</h3>
+        <h3 class="centered-text small-text">You are logged in as "{{session['username']}}", as such your username will be associated with the post.</h3>
     {% endif %}
 </h2>
 <script src="{{ url_for('static', filename='create_cat.js') }}"></script>

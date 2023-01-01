@@ -1,8 +1,8 @@
 :root  {
     --light_grey: #c4c4c4;
     --grey: #707070;
-    --white:#dfdfdf;
-    --blue: #0c5d9c;
+    --white:#ffffff;
+    --blue: #041caa;
     --black:#050505;
     --red: #e00a0a;
 }
@@ -17,8 +17,7 @@ body {
 #logo {
 	float: left;
 	width: 240px;
-	height: auto;
-	
+	height: auto;	
 }
 
 
@@ -73,9 +72,9 @@ h1, h2 {
 #content {
   border-bottom-left-radius: 16px;
 	border-bottom-right-radius: 16px;
-	border: 1px solid #000;
+	border: 1px solid var(--black);
 	border-top: none;
-	background-color: #fff;
+	background-color: var(--white);
 	float: left;
 	font-family: Arial;
 	padding: 20px 30px;
@@ -137,31 +136,27 @@ a:hover {
 /* begin table styles */
 table {
 	border:5px var(--blue);
-	border-top-left-radius: .5em;
-	border-top-right-radius: .5em;
+	border-radius: 8px;
 	overflow: hidden;
 	display: table;
 	box-sizing: border-box;
 	border-collapse:collapse;
 	width: 100%;
-
-	border-collapse: collapse;
-	width: 100%;
 }
 
 table a {
-	color: rgb(15, 15, 15);
+	color: var(--black);
 	text-decoration: none;
 }
 
 table a:hover {
-	color:#000681;
+	color:var(--black);
 	text-decoration: none;
 }
 
 th {
-	background-color: #000681ce;
-	color: #F0F0F0;
+	background-color: var(--blue);
+	color: var(--white);
 	text-align: left;
 }
 
@@ -173,9 +168,9 @@ td {
 
 /* Menu styles */
 .item {
-	background-color: #000681ce;
-	border: 1px solid rgba(0, 51, 102, 0.735);
-	color: #FFF;
+	background-color: var(--blue);
+	border: 1px solid var(--blue);
+	color: var(--white);
 	font-family: Arial;
 	padding: 4px;
 	border-radius: 8px;
@@ -185,9 +180,9 @@ td {
 
 
 .back_button {
-	background-color: #000681ce;
-	border: 1px solid rgba(0, 51, 102, 0.735);
-	color: #FFF;
+	background-color: var(--blue);
+	border: 1px solid var(--blue);
+	color: var(--white);
 	font-family: Arial;
 	padding: 4px;
 	border-radius: 8px;
@@ -214,7 +209,7 @@ td {
 	display: flex;
 	align-items: center;
 	border-radius: 60px;
-	backdrop-filter: blur(4px) saturate(180%) ;
+	backdrop-filter: blur(4px) saturate(180%);
 }
 
 #Ricerca input {
@@ -223,41 +218,49 @@ td {
 	border: 0;
 	outline: none;
 	font-size: 15px;
-	color: rgba(0, 51, 102, 0.735);
+	color: var(--black);
 }
 #Ricerca select {
-	border-radius: 12px;
-	background-color: transparent;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: var(--blue);
+	border: 1px solid var(--blue);
+	color: var(--white);
+	font-family: Arial;
+	padding: 4px;
+	border-radius: 8px;
+	text-decoration: none;
+	font-size: 75%;
 }
 #Ricerca button {
 	border: 0;
 	border-radius: 50%;
 	width: 26px;
 	height: 26px;
-	background: #000681;
+	background:var(--blue);
 	cursor: pointer;
 	align-items: center;
 }
 .fa-search {
-	color: #FFF;
+	color: var(--white);
 }
 
 
 #menu {
 border-top-right-radius: 12px;
 border-top-left-radius: 12px;
-border: 1px solid #000;
+border: 1px solid var(--blue);
 border-bottom: none;		/* avoid a double border */
 clear: both;	
 margin: 0 auto;			/* clear:both makes sure the content div doesn't float next to this one but stays under it */
 width:100%;
 padding:0 30px;
-background-color: #FFF;
+background-color: var(--white);
 text-align: center;
 }
 
 #menu a:hover {
-	background-color: #009FC1;
+	background-color: var(--blue);
 }
 #menu ul {
 	width: 100%;
@@ -274,7 +277,7 @@ text-align: center;
 #userbar {
 	padding: 25px;
 	margin-left: 120px;
-	background-color: #fff;
+	background-color: var(--white);
 	float: right;
 	width: 250px;
 }
@@ -293,7 +296,7 @@ text-align: center;
   
   /* Dropdown button on hover & focus */
   .dropbtn:hover, .dropbtn:focus {
-	background-color: #009FC1;
+	background-color: #9a00c1;
 	border-radius: 8px;
   }
   
