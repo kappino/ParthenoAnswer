@@ -3,7 +3,9 @@
 {% block body %}
 <form id="post" method="post">
     <div>
-        Subject Name
+        Post title
+        <input type="text" name="post_title" id="post_title" placeholder="New post title.." spellcheck="false"  value="{{ post_title }}">
+         &nbsp;Content
         <input type="text" name="post_title" id="post_title" placeholder="New post title.." spellcheck="false"  value="{{ post_title }}">
         <input style="width:fit-content;height: fit-content;" type="text" name="post_content" id="post_content" placeholder="New post_content.." spellcheck="false"  value="{{ post_content }}">
         <input class=item type="submit" value="Add">
