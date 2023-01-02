@@ -47,7 +47,9 @@ def index():
                     
             except:
                 print("Errore!")
-    return render_template('index.html', categories = categories, last_post=last_post)
+        return render_template('index.html', categories = categories, last_post=last_post)  
+    else:
+        return render_template('index.html', categories=None)
       
 
 @app.route('/profile', methods=['GET'])
