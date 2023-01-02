@@ -19,7 +19,7 @@
             <td class="leftpart"><b>{{ subject }}</b></td>
             {% endif %}
             {% if last_post[loop.index-1]["title"] %}
-            <td class="rightpart"> {{ last_post[loop.index-1]["title"] }} </td>
+            <td class="rightpart"><a href="{{ url_for('comments', id=last_post[loop.index0]['_id']) }}"> {{ last_post[loop.index-1]["title"] }}</a></td>
             {% else %}
             <td class="rightpart"> No posts yet... </td>
             {% endif %}
