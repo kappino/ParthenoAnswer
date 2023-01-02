@@ -133,6 +133,7 @@ td {
 	padding: 5px;
 }
 
+
 /* Menu styles */
 .item {
 	background-color: var(--blue);
@@ -176,8 +177,6 @@ td {
 	color: var(--black);
 }
 #Ricerca select {
-	-webkit-appearance: none;
-	appearance: none;
 	background-color: var(--blue);
 	border: 1px solid var(--blue);
 	color: var(--white);
