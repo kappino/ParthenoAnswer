@@ -55,17 +55,10 @@
     
             <div id="userbar">
             {% if session['username'] %}
-                Hello <b>{{session['username']}}</b>. Not you? <button class="item" href="{{ url_for('sign_out')}}">Sign out</button>
+                Hello <b>{{session['username']}}</b>. Not you? <a href="{{ url_for('sign_out')}}"><button class="item">Sign out</button></a>
             {% else %}
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn"><i class="fa fa-fw fa-user"></i>Account</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="{{ url_for('sign_in') }}">
-                        <p style="letter-spacing: normal">Sing In</p>
-                    </a> 
-                </div>
-          </div>
-          {% endif %}
+            <a href="{{ url_for('sign_in') }}"><button class="item" >Sing In</button></a>
+            {% endif %}
             </div>
             </li>
             <li>
