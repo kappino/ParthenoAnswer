@@ -137,7 +137,6 @@ def view_subc(id):
         last_post=[]
         for subject in subjects:
             last_post.append(db_posts.find_one({'subject': subject}, sort=[('date',-1)]))
-            print("Post:",last_post)
     else:
         subjects = None
         last_post = None
