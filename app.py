@@ -27,26 +27,25 @@ def basic_auth(username, password):
 @app.route('/', methods=['GET'])
 def index():
     categories = None
-    if db_categories.count() > 0:
+    if db_categories.estimated_document_count() > 0:
         categories = list(db_categories.find())
         last_post=[]
         for category in categories:
-            try:
                 print(category["_id"])
                 subc = db_categories.find_one({"_id": ObjectId(category["_id"])})
                 subjects = subc['subject']
+                i = 0
+                max = None
                 for subject in subjects:
-                    temp = db_posts.find_one({'subject': subject}, sort=[('date',-1)])
-                    if temp:
-                        print("Temp: ",temp)
-                        last_post.append(temp)
-                        break
-                    else:
-                        last_post.append(None)
-                        break
-                    
-            except:
-                print("Errore!")
+                        temp = db_posts.find_one({'subject': subject}, sort=[('date',-1)])
+                        if temp:
+                            if i==0:
+                                max = temp
+                                i=1
+                            elif temp["date"] > max["date"]:
+                                max = temp 
+                print(max)
+                last_post.append(max)     
         return render_template('index.html', categories = categories, last_post=last_post)  
     else:
         return render_template('index.html', categories=None)
