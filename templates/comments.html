@@ -2,8 +2,8 @@
 
 {% block body %}
 
-<div class="centered-block" style="width: 95%">
-    <table border="1">
+<div style="width: 95%">
+    <table>
         <tr>
             <th>&nbsp;Post</th>
             <th >&nbsp;Created by</th>
@@ -33,8 +33,8 @@
         Subject Name
         <input type="text" name="comments_content" id="comments_content" placeholder="New comment.." spellcheck="false"  value="{{ comments_content }}">
 
-        <input class=item type="submit" value="Add">
-        <h2 id="success" class="hidden" style="color: var(--yellow)">Successfully submitted!</h2>
+        <input type="submit" value="Add">
+        <h2 id="success" class="hidden" style="color: var(--black)">Successfully submitted!</h2>
         <h2 id="failure" class="hidden" style="color: var(--red)">Failure to submit! </h2>
         </div>
 </form>
