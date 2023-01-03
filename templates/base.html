@@ -16,22 +16,19 @@
 <body>
     <div id="wrapper">
     <div id="menu">
-        <ul>
-            <li>
-            <a href="{{ url_for('index') }}"><img id=logo src="{{ url_for('static', filename='logo.png') }}" float=left/></a>
-            </li>
-            <li>
-            <form id= "Ricerca" method="post" action="{{ url_for('search') }}">
-            <select name="id_search" >
-                <option value= "topics"> topic </option>
-                <option value= "users"> user </option>	
-            </select>
-            <input type="text" placeholder="Search anything" name="search">
-            <button type="submit" name="submit"><i class="fa fa-fw fa-search"></i></button>
-            </form>
-            </li>
-            <li>
-    
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a href="{{ url_for('index') }}"><img id=logo src="{{ url_for('static', filename='logo.png') }}" float=left/></a>
+              <form class="d-flex" form id= "Ricerca" method="post" action="{{ url_for('search') }}">
+                <select name="id_search" >
+                    <option value= "topics"> topic </option>
+                    <option value= "users"> user </option>
+                    <input type="text" placeholder="Search anything" name="search">
+                <button type="submit" name="submit"><i class="fa fa-fw fa-search"></i></button>
+              </form><button type="button" class="back_button"  
+              onClick="history.back();" >go back</button>
+            </div>
+          </nav>
             <div id="userbar">
             {% if session['username'] %}
                 Hello <b>{{session['username']}}</b>. Not you? <a href="{{ url_for('sign_out')}}"><button class="item">Sign out</button></a>
@@ -40,19 +37,13 @@
             {% endif %}
             </div>
             </li>
-            <li>
-                <form><button type="button" class="back_button"  
-                    onClick="history.back();" >go back</button>
-                </form>
-            </li>
         </ul>
             </div>
-
         <div id="content">
-    {% block body %}
+    {% block body %}<!--commento di prova--> 
     {% endblock %}
         </div> <!--content-->
     </div> <!--wrapper--> 
-    <div id="footer"  action=ìì>  <input type="button" value="Developers" id="footer1"  action=ìì> &nbsp &nbsp &nbsp <input type="button" value="useful links"> </div>
+    <div id="footer">Aiello Riccardo - Esposito Crescenzo - Genovese Aniello</div>
 </body>
 </html>
