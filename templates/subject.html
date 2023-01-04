@@ -4,33 +4,44 @@
   
 
 {% if subjects %}
-<div class="centered-block" style="width: 95%">
-    <table border="1">
-        <tr>
-            <th>Sub-category</th>
-            <th>Last Post</th>
-            <th></th>
-        </tr>
-        {% for subject in subjects  %}
-        <tr>
-            {% if session['username'] %}
-            <td class="leftpart"><a href="{{ url_for('view_post', subject=subject) }}"> <b>{{ subject }}</b></a></td>
-            {% else %}
-            <td class="leftpart"><b>{{ subject }}</b></td>
-            {% endif %}
-            {% if last_post[loop.index-1]["title"] %}
-            {% if session['username'] %}
-            <td class="rightpart"><a href="{{ url_for('comments', id=last_post[loop.index0]['_id']) }}"> {{ last_post[loop.index-1]["title"] }}</a></td>
-            {% else %}
-            <td class="rightpart">{{ last_post[loop.index-1]["title"] }}</td>
-            {% endif %}
-            {% else %}
-            <td class="rightpart"> No posts yet... </td>
-            {% endif %}
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+
+<div class="card mb-3" style="width: 90%; margin: 0 auto;">
+    <div class="card-header pl-0 pr-0">
+       <div class="row no-gutters w-100 align-items-center">
+          <div class="col ml-3"><b>Subject</b></div>
+          <div class="col-4 text-muted">
+             <div class="row no-gutters align-items-center">
+                <div class="col-lg-10">&nbsp;&nbsp;&nbsp;<b>Last Post</b></div>
+             </div>
+          </div>
+       </div>
+    </div>
+    {% for subject in subjects  %}
+    <div class="card-body py-3">
+       <div class="row no-gutters align-items-center">
+          <div class="col">
+             <a  href="{{ url_for('view_post', subject=subject) }}"  class="text-big" data-abc="true"><b>{{ subject }}</b></a>
+          </div>
+          <div class="d-none d-md-block col-4">
+             <div class="row no-gutters align-items-center">
+                {% if last_post[loop.index-1]["title"] %}
+                {% if session['username'] %}
+                <div class="col-lg-10"><a href="{{ url_for('comments', id=last_post[loop.index0]['_id']) }}">{{ last_post[loop.index0]["title"] }} </a></b> <br> {{ last_post[loop.index0]['subject'] }}</div>
+                {% else %}
+                <div class="col-lg-10">{{ last_post[loop.index0]["title"] }}</b> <br> {{ last_post[loop.index0]['subject'] }}</div>
+                {% endif %}
+                {% else %}
+                <td class="rightpart"> &nbsp;&nbsp;&nbsp;No posts yet... </td>
+                {% endif %}
+                
+             </div>
+          </div>
+       </div>
+    </div>
+    <hr class="m-0">
+   
+    {% endfor %}
+   
 {% else %}
     <h1>No Subjects yet!</h1>
 {% endif %}
