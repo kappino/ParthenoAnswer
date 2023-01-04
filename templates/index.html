@@ -30,7 +30,7 @@
             <td class="rightpart"><br> No posts yet..</td>
             {% endif %}
             {% if session['user_level'] == 1 %}
-            <td width="12%"><a class="item" href="{{ url_for('update_subj', id=category._id) }}">Add sub-category</a></td>
+            <td width="1%"><a class="item" href="{{ url_for('update_subj', id=category._id) }}">Add sub-category</a></td>
             {% endif %}
         </tr>
         {% endfor %}
