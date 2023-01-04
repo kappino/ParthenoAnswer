@@ -27,9 +27,6 @@
             {% else %}
             <td class="rightpart"> No posts yet... </td>
             {% endif %}
-            {% if session['username'] %}
-            <td><a class="item" href="{{ url_for('create_posts', subject=subject) }}">Add&nbsp;Post</a></td>
-            {% endif %}
         </tr>
         {% endfor %}
     </table>

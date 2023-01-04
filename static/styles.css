@@ -59,6 +59,9 @@ th{
 	margin-left: auto;
 	margin-right: auto;
 }
+
+
+
 table {
 	display: block;
 	margin-left: auto;
@@ -83,3 +86,4 @@ tr td:last-child {
 .btn-primary{
 	background-color: var(--blue);
 }
+

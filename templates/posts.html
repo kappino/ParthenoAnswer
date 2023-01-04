@@ -12,33 +12,87 @@
 {% endif %}    
 
 {% if posts %}
-<div class="centered-block" style="width: 95%">
-    <table class="table_short" border="1">
-        <tr>
-            <th>&nbsp;Post</th>
-            <th>&nbsp;Created by</th>
+
+
+<div class="container-fluid mt-100">
+     
             
-        </tr>
-        {% for post in posts  %}
-        <tr>
-            <td class="td_short"><a href="{{ url_for('comments', id=post['_id']) }}"><b>{{ post["title"] }}</b></a><br>{{ post["content"] }}</td>
-            <td class="td_short"><b>{{ post["author"] }}</b> <br> {{post["date"]}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
-{% else %}
-    <h1>No posts yet!</h1>
-{% endif %}
+    <div class="d-flex flex-wrap justify-content-between">
+       <div>
+        
+        {% if session['username'] %}
+        
+         <a href="{{ url_for('create_posts', subject=subject) }}"> <button type="button" class="btn btn-shadow btn-wide btn-primary">
+          <span class="btn-icon-wrapper pr-2 opacity-7">
+          <i class="fa fa-plus fa-w-20"></i>
+          </span>
+          New thread
+          </button></a>
+          {% endif %}
+       </div>
+       <div class="col-12 col-md-3 p-0 mb-3">
+          <input type="text" class="form-control" placeholder="Search...">
+       </div>
+    </div>
+    <div class="card mb-3">
+       <div class="card-header pl-0 pr-0">
+          <div class="row no-gutters w-100 align-items-center">
+             <div class="col ml-3">Topics</div>
+             <div class="col-4 text-muted">
+                <div class="row no-gutters align-items-center">
+                   <div class="col-8">Replies</div>
+                </div>
+             </div>
+          </div>
+       </div>
+       {% for post in posts  %}
+       <div class="card-body py-3">
+          <div class="row no-gutters align-items-center">
+             <div class="col">
+                <a  href="{{ url_for('comments', id=post['_id']) }}"  class="text-big" data-abc="true">{{ post["title"] }}</a>
+                <div class="text-muted small mt-1">Started 25 days ago &nbsp;&middot;&nbsp; {{ post["author"] }}</div>
+             </div>
+             <div class="d-none d-md-block col-4">
+                <div class="row no-gutters align-items-center">
+                   <div class="col-4">{{post["replies"]|length}}</div>
+                   
+                </div>
+             </div>
+          </div>
+       </div>
+       {% endfor %}
+
+       <hr class="m-0">
+       {% else %}
+       <h1>No posts yet!</h1>
+       {% endif %}
+
+  
+   
+    </div>
+    <nav>
+       <ul class="pagination mb-5">
+          <li class="page-item disabled"><a class="page-link" href="javascript:void(0)" data-abc="true">&laquo;</a></li>
+          <li class="page-item active"><a class="page-link" href="javascript:void(0)" data-abc="true">1</a></li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0)" data-abc="true">2</a></li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0)" data-abc="true">3</a></li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0)" data-abc="true">&raquo;</a></li>
+       </ul>
+    </nav>
+
     {% if username=='Guest' %}
-        <h3>
-            You are not logged in, as such your posts will display to public as "Guest".
-            To log-in, please head to the "Profile" section.
-        </h3>
-    {% else %}
-        <h3>You are logged in as "{{session["username"]}}", as such your username will be associated with the post.</h3>
-    {% endif %}
+    <h3>
+        You are not logged in, as such your posts will display to public as "Guest".
+        To log-in, please head to the "Profile" section.
+    </h3>
+{% else %}
+    <h3>You are logged in as "{{session["username"]}}", as such your username will be associated with the post.</h3>
+{% endif %}
 </h2>
+
+ 
+
+</div>
 
 
 

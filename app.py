@@ -126,7 +126,7 @@ def view_post(subject):
     logged_in = False
     if 'username' in session:
         logged_in = True
-    return render_template('posts.html', logged_in=logged_in, posts=posts)
+    return render_template('posts.html', logged_in=logged_in, posts=posts, subject=subject)
 
 @app.route('/view_subc/<string:id>')
 def view_subc(id):
