@@ -30,7 +30,7 @@
               
               <div id="userbar">
                 {% if session['username'] %}
-                    Hello <b>{{session['username']}}</b>. Not you? <a href="{{ url_for('sign_out')}}"><button class="btn btn-sm btn-primary">Sign out</button></a>
+                    Hello <a href="{{ url_for('profile') }}"><b>{{session['username']}}</b></a>. Not you? <a href="{{ url_for('sign_out')}}"><button class="btn btn-sm btn-primary">Sign out</button></a>
                 {% else %}
                 <a href="{{ url_for('sign_in') }}"><button class="btn btn-sm btn-primary" >Sing In</button></a>
                 {% endif %}
