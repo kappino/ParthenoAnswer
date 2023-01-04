@@ -14,40 +14,53 @@
 {% endif %}    
 
 {% if categories != None %}
-<div class="centered-block" style="width: 95%">
-    <table border="1">
-        <tr>
-            <th>&nbsp;Forums</th>
-            <th>&nbsp;Last Post</th>
-            <th></th>
-        </tr>
-        {% for category in categories %}
-        <tr>
-            <td class="leftpart"><a href="{{ url_for('view_subc', id=category._id) }}"><b>{{category["cat_name"]}}</b></a><br>{{ category["cat_desc"] }}</td>
-            {% if last_post[loop.index0] %}
-            <td class="rightpart"><b><a href="{{ url_for('comments', id=last_post[loop.index0]['_id']) }}">{{ last_post[loop.index0]["title"] }} </a></b> <br> {{ last_post[loop.index0]['subject'] }}</td>
-            {% else %}
-            <td class="rightpart"><br> No posts yet..</td>
-            {% endif %}
-            {% if session['user_level'] == 1 %}
-            <td><a class="item" href="{{ url_for('update_subj', id=category._id) }}">Add sub-category</a></td>
-            {% endif %}
-        </tr>
-        {% endfor %}
-    </table>
+
+<div class="card mb-3" style="width: 90%; margin: 0 auto;">
+ <div class="card-header pl-0 pr-0">
+    <div class="row no-gutters w-100 align-items-center">
+       <div class="col ml-3"><b>Category</b></div>
+       <div class="col-4 text-muted">
+          <div class="row no-gutters align-items-center">
+             <div class="col-lg-10">&nbsp;&nbsp;&nbsp;<b>Last Post</b></div>
+          </div>
+       </div>
+    </div>
+ </div>
+ {% for category in categories  %}
+ <div class="card-body py-3">
+    <div class="row no-gutters align-items-center">
+       <div class="col">
+          <a  href="{{ url_for('view_subc', id=category._id) }}"  class="text-big" data-abc="true"><b>{{category["cat_name"]}}</b></a><br>{{ category["cat_desc"] }}</a>
+       </div>
+       <div class="d-none d-md-block col-4">
+          <div class="row no-gutters align-items-center">
+             <div class="col-lg-10"><a href="{{ url_for('comments', id=last_post[loop.index0]['_id']) }}">{{ last_post[loop.index0]["title"] }} </a></b> <br> {{ last_post[loop.index0]['subject'] }}</div>
+             
+          </div>
+       </div>
+    </div>
+ </div>
+ {% endfor %}
+
+ <hr class="m-0">
+ {% else %}
+ <h1>No posts yet!</h1>
+ {% endif %}
+
+
+
 </div>
-{% else %}
-    <h1>No Categories yet!</h1>
-{% endif %}
-    {% if not session['username'] %}
-        <h3 class="black-text centered-text small-text">
-            You are not logged in, for create a new post you must login.
-            To log-in, please head to the "Account" section.
-        </h3>
-    {% else %}
-        <h3 class="centered-text small-text">You are logged in as "{{session['username']}}", as such your username will be associated with the post.</h3>
-    {% endif %}
-</h2>
+</div>
+
+
+
+
+
+
+
+
+
+
 <script src="{{ url_for('static', filename='create_cat.js') }}"></script>
 <script src="{{ url_for('static', filename='register_sw.js') }}"></script>
 {% endblock %}
