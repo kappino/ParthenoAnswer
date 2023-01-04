@@ -14,8 +14,8 @@ body {
 }
 
 #wrapper {
-	padding: 100px;	
-	/* center the page */
+	padding: 50px;	
+	margin: 0 auto;/* center the page */
 }
 #content {
     border-bottom-left-radius: 16px;
@@ -61,3 +61,24 @@ th{
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.td_short {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 25px;
+  }
+
+.leftpart {
+	width: 70%;
+}
+
+.rightpart {
+	width: 70%;
+}
+
+
+  .table_short {
+	table-layout: fixed;
+	width: 100%
+  }

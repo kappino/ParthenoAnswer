@@ -2,15 +2,21 @@
 
 {% block body %}
 <form id="post" method="post">
-    <div>
-        Post title
-        <input type="text" name="post_title" id="post_title" placeholder="New post title.." spellcheck="false"  value="{{ post_title }}">
-         &nbsp;Content
-        <input style="width:fit-content;height: fit-content;" type="text" name="post_content" id="post_content" placeholder="New post_content.." spellcheck="false"  value="{{ post_content }}">
-        <input type="submit" value="Add">
-        <h2 id="success" style="color: var(--black)">Successfully submitted!</h2>
-        <h2 id="failure" style="color: var(--red)">Failure to submit! </h2>
-        </div>
+    <div style="width: 90%;margin: 0 auto;">
+        
+        <div class="mb-3">
+            <label class="form-label">Post Title</label>
+            <input class="form-control" type="text" name="post_title" id="post_title" spellcheck="false"  value="{{ post_title }}">
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Post Content</label>
+            <textarea class="form-control" id="post_content" rows="3"></textarea>
+          </div>
+          <input class="btn" type="submit" value="Submit New Post">
+
+          <h2 id="success" style="color: var(--black)">Successfully submitted!</h2>
+          <h2 id="failure" style="color: var(--red)">Failure to submit! </h2>
+    </div>
 </form>
 <script src="{{ url_for('static', filename='create_post.js') }}"></script>
 {% endblock %}

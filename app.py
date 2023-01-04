@@ -65,18 +65,21 @@ def sign_in():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-
+        headers = { 'Authorization' : basic_auth(username, password) }
         login_user = db_users.find_one({'username': username})
         if login_user:
             if bcrypt.checkpw(password.encode('utf-8'), login_user['password']):
                 session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                 session['cf'] = username
                 session['user_level'] = login_user['user_level']
+                for esame in enumerate(login_user ["esami"]):
+                    r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/students/checkExams/"+str(login_user["user"]["trattiCarriera"][-1]["matId"])+"/"+str(esame["adsceId"]), headers=headers )                    
+                    if r.json()["voto"]!=None:
+                        db_users.update_one({"_id": login_user["_id"], "esami": esame}, {"$set": {"esami.$.stato": r.json()["stato"], "esami.$.voto":r.json()["voto"] }})
                 return jsonify("Utente trovato, Bentornato!"),200
             else:
                 return jsonify("Password sbagliata!"),400
         elif not login_user:
-            headers = { 'Authorization' : basic_auth(username, password) }
             while True:
                 r = requests.get('https://api.uniparthenope.it/UniparthenopeApp/v1/login', headers=headers)
                 if r.status_code == 200:
@@ -85,6 +88,8 @@ def sign_in():
                     db_users.insert_one({'username': username, 'password': hashed_pass, 'user_level': 0, 'user': user})
                     session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                     session['user_level'] = login_user['user_level']
+                    r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/students/exams/"+str(login_user["user"]["trattiCarriera"][-1]["stuId"])+"/5",headers=headers)
+                    db_users.update_one({"_id": login_user["_id"]}, {"$set": {"esami": r.json()}} )
                     return jsonify("Utente trovato, Benvenuto!"),200
                 else:
                     return jsonify("Credenziali Sbagliate!"),401

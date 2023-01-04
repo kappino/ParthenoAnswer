@@ -13,7 +13,7 @@
 
 {% if posts %}
 <div class="centered-block" style="width: 95%">
-    <table border="1">
+    <table class="table_short" border="1">
         <tr>
             <th>&nbsp;Post</th>
             <th>&nbsp;Created by</th>
@@ -21,8 +21,8 @@
         </tr>
         {% for post in posts  %}
         <tr>
-            <td class="leftpart"><a href="{{ url_for('comments', id=post['_id']) }}"><b>{{ post["title"] }}</b></a><br>{{ post["content"] }}</td>
-            <td class="rightpart"><b>{{ post["author"] }}</b> <br> {{post["date"]}}</td>
+            <td class="td_short"><a href="{{ url_for('comments', id=post['_id']) }}"><b>{{ post["title"] }}</b></a><br>{{ post["content"] }}</td>
+            <td class="td_short"><b>{{ post["author"] }}</b> <br> {{post["date"]}}</td>
         </tr>
         {% endfor %}
     </table>
