@@ -62,6 +62,10 @@ def profile():
         return render_template('profile.html',login_user=login_user)
     return redirect('/sign_in')
 
+@app.route('/show_profile/<string:id>')
+def show_profile():
+    user = db_users.find_one({"_id":ObjectId(id)})
+    return render_template("profile.html", login_user=user)
 
 
 @app.route("/sign_in", methods=['GET', 'POST'])
@@ -76,10 +80,9 @@ def sign_in():
                 session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                 session['cf'] = username
                 session['user_level'] = login_user['user_level']
-                for esame in enumerate(login_user ["esami"]):
-                    r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/students/checkExams/"+str(login_user["user"]["trattiCarriera"][-1]["matId"])+"/"+str(esame["adsceId"]), headers=headers )                    
-                    if r.json()["voto"]!=None:
-                        db_users.update_one({"_id": login_user["_id"], "esami": esame}, {"$set": {"esami.$.stato": r.json()["stato"], "esami.$.voto":r.json()["voto"] }})
+                session['_id'] = login_user["_id"]
+                r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v2/students/myExams/"+str(login_user["user"]["trattiCarriera"][-1]["matId"]), headers=headers )                    
+                db_users.update_one({"_id": login_user["_id"]}, {"$set": {"esami": r.json()}} )
                 return jsonify("Utente trovato, Bentornato!"),200
             else:
                 return jsonify("Password sbagliata!"),400
@@ -103,6 +106,7 @@ def sign_in():
 def sign_out():
     session.pop('username')
     session.pop('user_level')   
+    session.pop('_id')
     return redirect('/profile')
 
 @app.route('/create_cat', methods=['POST'])
@@ -134,7 +138,7 @@ def view_post(subject):
     logged_in = False
     if 'username' in session:
         logged_in = True
-    return render_template('posts.html', logged_in=logged_in, posts=posts)
+    return render_template('posts.html', logged_in=logged_in, posts=posts, subject=subject)
 
 @app.route('/view_subc/<string:id>')
 def view_subc(id):
@@ -203,7 +207,7 @@ def create_posts(subject):
         post_content = request.form.get('post_content')
         if not post_content:
             return "Content cannot be blank"
-        db_posts.insert_one({'title': post_title, 'content': post_content, 'author': session['username'],'subject': subject, 'date': datetime.now().strftime("%Y-%m-%d %H:%M")})
+        db_posts.insert_one({'title': post_title, 'content': post_content,'authorId': session['_id'] ,'author': session['username'],'subject': subject, 'date': datetime.now().strftime("%Y-%m-%d %H:%M")})
         return "success"
     return render_template('create_posts.html') 
 

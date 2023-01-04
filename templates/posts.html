@@ -51,7 +51,7 @@
           <div class="row no-gutters align-items-center">
              <div class="col">
                 <a  href="{{ url_for('comments', id=post['_id']) }}"  class="text-big" data-abc="true">{{ post["title"] }}</a>
-                <div class="text-muted  mt-1">{{ post["author"] }}</div>
+                <div class="text-muted  mt-1"><a href="{{ url_for('show_profile', id=post['authorId']) }}">{{post["author"] }}</a></div>
              </div>
              <div class="d-none d-md-block col-4">
                 <div class="row no-gutters align-items-center">
