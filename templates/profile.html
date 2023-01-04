@@ -116,7 +116,7 @@
                             <p class="mb-4"><span class="text-primary font-italic me-1">Esami Superati</span>
                             </p>
                             {% for esame in login_user["esami"]%}
-                            {% if esame["stato"]=="Superata"%}
+                            {% if esame["status"]["esito"]=="S"%}
                           <p class="mt-4 mb-1" style="font-size: .77rem;"><b>{{esame["nome"].title()}}</b></p>
                           <div class="progress rounded" style="height: 5px;">
                             <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100"

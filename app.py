@@ -72,10 +72,8 @@ def sign_in():
                 session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                 session['cf'] = username
                 session['user_level'] = login_user['user_level']
-                for esame in login_user ["esami"]:
-                    r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/students/checkExams/"+str(login_user["user"]["trattiCarriera"][-1]["matId"])+"/"+str(esame["adsceId"]), headers=headers )                    
-                    if r.json()["voto"]!=None:
-                        db_users.update_one({"_id": login_user["_id"], "esami": esame}, {"$set": {"esami.$.stato": r.json()["stato"], "esami.$.voto":r.json()["voto"] }})
+                r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v2/students/myExams/"+str(login_user["user"]["trattiCarriera"][-1]["matId"]), headers=headers )                    
+                db_users.update_one({"_id": login_user["_id"]}, {"$set": {"esami": r.json()}} )
                 return jsonify("Utente trovato, Bentornato!"),200
             else:
                 return jsonify("Password sbagliata!"),400
@@ -88,8 +86,6 @@ def sign_in():
                     db_users.insert_one({'username': username, 'password': hashed_pass, 'user_level': 0, 'user': user})
                     session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                     session['user_level'] = login_user['user_level']
-                    r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/students/exams/"+str(login_user["user"]["trattiCarriera"][-1]["stuId"])+"/5",headers=headers)
-                    db_users.update_one({"_id": login_user["_id"]}, {"$set": {"esami": r.json()}} )
                     return jsonify("Utente trovato, Benvenuto!"),200
                 else:
                     return jsonify("Credenziali Sbagliate!"),401
