@@ -2,13 +2,13 @@
     --light_grey: #c4c4c4;
     --grey: #707070;
     --blue: #041caa;
+	--light_blue: #4157d6;
 }
 body {
     background-color: var(--light_grey);
     color: black;
 }
 #logo {
-	float: left;
 	width: 240px;
 	height: auto;	
 }
@@ -62,4 +62,24 @@ th{
 }
 table {
 	width:90% ;	
+}
+nav{
+	width: 104%;
+	border-radius: 16px;
+	background-color:red;
+}
+.navbar{
+	background-color: white;
+}
+.bg-body-tertiary {
+    --bs-bg-opacity: 50%!important;
+    background-color:white!important;
+}
+.fa{
+	background-color: var(--blue);
+	color: white;
+}
+button{
+	background-color: var(--blue);
+	color: white;
 }
