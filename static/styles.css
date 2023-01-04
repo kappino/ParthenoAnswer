@@ -2,15 +2,15 @@
     --light_grey: #c4c4c4;
     --grey: #707070;
     --blue: #041caa;
+	--light_blue: #4157d6;
 }
 body {
     background-color: var(--light_grey);
     color: black;
 }
 #logo {
-	float: left;
-	width: 240px;
-	height: auto;	
+	max-width:70%; width:70%;
+	background-color: white;	
 }
 
 #wrapper {
@@ -24,7 +24,6 @@ body {
 	border-top: none;
 	background-color: white;
 	font-family: Arial;
-	padding: 20px 30px;
 	text-align: left;			
 }
 
@@ -43,10 +42,9 @@ body {
 	border: 1px solid var(--blue);
 	border-bottom: none;		/* avoid a double border */	
 	margin: 0 auto;			/* clear:both makes sure the content div doesn't float next to this one but stays under it */
-	padding:0 30px;
+	padding:0 20px;
 	background-color: white;
 }
-
 .form-select{
 	background-color: var(--blue);
 	color: white;
@@ -61,6 +59,7 @@ th{
 	margin-left: auto;
 	margin-right: auto;
 }
+<<<<<<< HEAD
 
 .td_short {
 	white-space: nowrap;
@@ -82,3 +81,26 @@ th{
 	table-layout: fixed;
 	width: 100%
   }
+=======
+table {
+	display: block;
+	margin-left: auto;
+	margin-right: auto	
+}
+button{
+	background-color: var(--blue);
+	color: white;
+	border-radius: .375rem;
+}
+.bg-body-tertiary {
+    --bs-bg-opacity: 0;
+}
+td {
+    border: 1px solid var(--blue);
+}
+
+tr td:last-child {
+    width: 1%;
+    white-space: nowrap;
+}
+>>>>>>> c7bcb388255fb05cae3540b0903d573f17006ae0

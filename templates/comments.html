@@ -21,8 +21,8 @@
         
         {% for reply in post["replies"]  %}
         <tr>
-            <td class="leftpart"><b>{{ reply["author"] }}</b><br>{{ reply["content"] }}</td>
-            <td class="rightpart"><b>{{reply["date"]}}</b></td>
+            <td><b>{{ reply["author"] }}</b><br>{{ reply["content"] }}</td>
+            <td><b>{{reply["date"]}}</b></td>
         </tr>
         {% endfor %}
     </table>

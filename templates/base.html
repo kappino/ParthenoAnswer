@@ -18,13 +18,14 @@
     <div id="menu">
         <nav class="navbar">
             <div class="container-fluid">
-                <a href="{{ url_for('index') }}"><img id=logo src="{{ url_for('static', filename='logo.png') }}" float=left/></a>
-              <form class="d-flex" form id= "Ricerca" method="post" action="{{ url_for('search') }}">
+                <a href="{{ url_for('index') }}"><img id=logo src="{{ url_for('static', filename='logo.png') }}"/></a>
+              <form class="d-flex" method="post" action="{{ url_for('search') }}">
                 <select class="form-select" name="id_search">
                     <option value= "topics"> topic </option>
                     <option value= "users"> user </option>
                     <input type="text" placeholder="Search anything" name="search">
                 <button type="submit" name="submit"><i class="fa fa-fw fa-search"></i></button>
+<<<<<<< HEAD
               </form>
               
               
@@ -39,6 +40,22 @@
             </div>
           </nav>
           <button type="button" class="btn btn-sm btn-primary" style="margin-left: 30px;" onClick="history.back();" ><i class="fa-solid fa-arrow-left"></i> go back</button>
+=======
+              </form><button onClick="history.back();" >go back</button>
+            </div>
+          </nav>
+            <div id="userbar">
+            {% if session['username'] %}
+                Hello <b>{{session['username']}}</b>. Not you? <a href="{{ url_for('sign_out')}}"><button class="item">Sign out</button></a>
+                <br>
+                <br>
+            {% else %}
+            <a href="{{ url_for('sign_in') }}"><button class="item" >Sing In</button></a>
+            {% endif %}
+            </div>
+            </li>
+        </ul>
+>>>>>>> c7bcb388255fb05cae3540b0903d573f17006ae0
             </div>
         <div id="content">
     {% block body %}<!--commento di prova--> 
