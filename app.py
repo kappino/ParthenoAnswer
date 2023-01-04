@@ -48,7 +48,6 @@ def index():
                                 i=1
                             elif temp["date"] > max["date"]:
                                 max = temp 
-                print(max)
                 last_post.append(max)     
         return render_template('index.html', categories = categories, last_post=last_post)  
     else:
@@ -63,7 +62,7 @@ def profile():
     return redirect('/sign_in')
 
 @app.route('/show_profile/<string:id>')
-def show_profile():
+def show_profile(id):
     user = db_users.find_one({"_id":ObjectId(id)})
     return render_template("profile.html", login_user=user)
 
@@ -80,7 +79,8 @@ def sign_in():
                 session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                 session['cf'] = username
                 session['user_level'] = login_user['user_level']
-                session['_id'] = login_user["_id"]
+                print(login_user["_id"])
+                session['_id'] = str(login_user["_id"])
                 r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v2/students/myExams/"+str(login_user["user"]["trattiCarriera"][-1]["matId"]), headers=headers )                    
                 db_users.update_one({"_id": login_user["_id"]}, {"$set": {"esami": r.json()}} )
                 return jsonify("Utente trovato, Bentornato!"),200
