@@ -39,13 +39,12 @@
             </div>
           </nav>
           <button type="button" class="btn btn-sm btn-primary" style="margin-left: 30px;" onClick="history.back();" ><i class="fa-solid fa-arrow-left"></i> go back</button>
-        <br><br>    
-        </div>
+            </div>
         <div id="content">
     {% block body %}<!--commento di prova--> 
     {% endblock %}
         </div> <!--content-->
     </div> <!--wrapper--> 
-     <div id="footer"  action=ìì>  <input type="button" value="Developers" id="footer1"  action=ìì> &nbsp &nbsp &nbsp <input type="button" value="Useful links"> </div>
+    <a href="{{ url_for('developers') }}"><div id="footer"  action=ìì>  <input type="button" value="Developers" id="footer1"  action=ìì></a> &nbsp &nbsp &nbsp<a href="{{ url_for('link') }}"> <input type="button" value="Useful links"></a> </div>
  </body>
  </html>
