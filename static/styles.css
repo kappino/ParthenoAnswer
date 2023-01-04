@@ -80,3 +80,6 @@ tr td:last-child {
     width: 1%;
     white-space: nowrap;
 }
+.btn-primary{
+	background-color: var(--blue);
+}
