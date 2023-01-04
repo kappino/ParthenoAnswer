@@ -72,8 +72,10 @@ def sign_in():
                 session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                 session['cf'] = username
                 session['user_level'] = login_user['user_level']
-                r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v2/students/myExams/"+str(login_user["user"]["trattiCarriera"][-1]["matId"]), headers=headers )                    
-                db_users.update_one({"_id": login_user["_id"]}, {"$set": {"esami": r.json()}} )
+                for esame in enumerate(login_user ["esami"]):
+                    r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/students/checkExams/"+str(login_user["user"]["trattiCarriera"][-1]["matId"])+"/"+str(esame["adsceId"]), headers=headers )                    
+                    if r.json()["voto"]!=None:
+                        db_users.update_one({"_id": login_user["_id"], "esami": esame}, {"$set": {"esami.$.stato": r.json()["stato"], "esami.$.voto":r.json()["voto"] }})
                 return jsonify("Utente trovato, Bentornato!"),200
             else:
                 return jsonify("Password sbagliata!"),400
@@ -86,6 +88,8 @@ def sign_in():
                     db_users.insert_one({'username': username, 'password': hashed_pass, 'user_level': 0, 'user': user})
                     session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                     session['user_level'] = login_user['user_level']
+                    r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/students/exams/"+str(login_user["user"]["trattiCarriera"][-1]["stuId"])+"/5",headers=headers)
+                    db_users.update_one({"_id": login_user["_id"]}, {"$set": {"esami": r.json()}} )
                     return jsonify("Utente trovato, Benvenuto!"),200
                 else:
                     return jsonify("Credenziali Sbagliate!"),401
@@ -126,7 +130,7 @@ def view_post(subject):
     logged_in = False
     if 'username' in session:
         logged_in = True
-    return render_template('posts.html', logged_in=logged_in, posts=posts, subject=subject)
+    return render_template('posts.html', logged_in=logged_in, posts=posts)
 
 @app.route('/view_subc/<string:id>')
 def view_subc(id):
@@ -212,6 +216,13 @@ def comments(id):
         return "success"
     return render_template('comments.html', post=post) 
 
+@app.route('/developers', methods=['GET', 'POST'])
+def developers():
+    return render_template('developers.html')
+
+@app.route('/link', methods=['GET', 'POST'])
+def link():
+    return render_template('link.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

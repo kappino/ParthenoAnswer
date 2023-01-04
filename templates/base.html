@@ -30,7 +30,7 @@
               
               <div id="userbar">
                 {% if session['username'] %}
-                    Hello <a href="{{ url_for('profile') }}"><b>{{session['username']}}</b></a>. Not you? <a href="{{ url_for('sign_out')}}"><button class="btn btn-sm btn-primary">Sign out</button></a>
+                    Hello <b>{{session['username']}}</b>. Not you? <a href="{{ url_for('sign_out')}}"><button class="btn btn-sm btn-primary">Sign out</button></a>
                 {% else %}
                 <a href="{{ url_for('sign_in') }}"><button class="btn btn-sm btn-primary" >Sing In</button></a>
                 {% endif %}
@@ -39,13 +39,12 @@
             </div>
           </nav>
           <button type="button" class="btn btn-sm btn-primary" style="margin-left: 30px;" onClick="history.back();" ><i class="fa-solid fa-arrow-left"></i> go back</button>
-        <br><br>    
-        </div>
+            </div>
         <div id="content">
     {% block body %}<!--commento di prova--> 
     {% endblock %}
         </div> <!--content-->
     </div> <!--wrapper--> 
-     <div id="footer"  action=ìì>  <input type="button" value="Developers" id="footer1"  action=ìì> &nbsp &nbsp &nbsp <input type="button" value="Useful links"> </div>
+    <a href="{{ url_for('developers') }}"><div id="footer"  action=ìì>  <input type="button" value="Developers" id="footer1"  action=ìì></a> &nbsp &nbsp &nbsp<a href="{{ url_for('link') }}"> <input type="button" value="Useful links"></a> </div>
  </body>
  </html>
