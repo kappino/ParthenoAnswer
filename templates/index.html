@@ -34,32 +34,32 @@
        </div>
        <div class="d-none d-md-block col-4">
           <div class="row no-gutters align-items-center">
+             {% if last_post[loop.index-1]["title"] %}
+             {% if session['username'] %}
              <div class="col-lg-10"><a href="{{ url_for('comments', id=last_post[loop.index0]['_id']) }}">{{ last_post[loop.index0]["title"] }} </a></b> <br> {{ last_post[loop.index0]['subject'] }}</div>
+             {% else %}
+             <div class="col-lg-10">{{ last_post[loop.index0]["title"] }}</b> <br> {{ last_post[loop.index0]['subject'] }}</div>
+             {% endif %}
+             {% else %}
+             <td class="rightpart"> &nbsp;&nbsp;&nbsp;No posts yet... </td>
+             {% endif %}
              
           </div>
        </div>
     </div>
  </div>
+ <hr class="m-0">
+
  {% endfor %}
 
- <hr class="m-0">
- {% else %}
- <h1>No posts yet!</h1>
- {% endif %}
-
+ 
+{% else %}
+No categories yet!
+{% endif %}
 
 
 </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 <script src="{{ url_for('static', filename='create_cat.js') }}"></script>
 <script src="{{ url_for('static', filename='register_sw.js') }}"></script>
