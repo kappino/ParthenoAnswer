@@ -72,12 +72,8 @@ def sign_in():
                 session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                 session['cf'] = username
                 session['user_level'] = login_user['user_level']
-                r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/students/exams/"+str(login_user["user"]["trattiCarriera"][-1]["stuId"])+"/5",headers=headers)
-                db_users.update_one({"_id": login_user["_id"]}, {"$set": {"esami": r.json()}} )
-                for esame in enumerate(login_user ["esami"]):
-                    matId = login_user["user"]["trattiCarriera"][-1]["matId"]
-                    adsceId = esame["adsceId"]
-                    r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/students/checkExams/"+str(matId)+"/"+str(adsceId), headers=headers )                    
+                for esame in login_user ["esami"]:
+                    r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/students/checkExams/"+str(login_user["user"]["trattiCarriera"][-1]["matId"])+"/"+str(esame["adsceId"]), headers=headers )                    
                     if r.json()["voto"]!=None:
                         db_users.update_one({"_id": login_user["_id"], "esami": esame}, {"$set": {"esami.$.stato": r.json()["stato"], "esami.$.voto":r.json()["voto"] }})
                 return jsonify("Utente trovato, Bentornato!"),200
