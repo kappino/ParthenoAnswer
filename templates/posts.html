@@ -22,7 +22,7 @@
         
         {% if session['username'] %}
         
-         <a href="{{ url_for('create_posts', subject=subject) }}"> <button type="button" class="btn btn-shadow btn-wide btn-primary">
+         <a href="{{ url_for('create_posts', subject=subject) }}"> <button type="button" class="btn btn-shadow btn btn-primary">
           <span class="btn-icon-wrapper pr-2 opacity-7">
           <i class="fa fa-plus fa-w-20"></i>
           </span>
@@ -40,7 +40,8 @@
              <div class="col ml-3">Topics</div>
              <div class="col-4 text-muted">
                 <div class="row no-gutters align-items-center">
-                   <div class="col-8">Replies</div>
+                   <div class="col-4">Replies</div>
+                   <div class="col-8">&nbsp;&nbsp;&nbsp;Last Reply</div>
                 </div>
              </div>
           </div>
@@ -50,19 +51,31 @@
           <div class="row no-gutters align-items-center">
              <div class="col">
                 <a  href="{{ url_for('comments', id=post['_id']) }}"  class="text-big" data-abc="true">{{ post["title"] }}</a>
-                <div class="text-muted small mt-1">Started 25 days ago &nbsp;&middot;&nbsp; {{ post["author"] }}</div>
+                <div class="text-muted  mt-1">{{ post["author"] }}</div>
              </div>
              <div class="d-none d-md-block col-4">
                 <div class="row no-gutters align-items-center">
-                   <div class="col-4">{{post["replies"]|length}}</div>
+                   <div class="col-4">{{post['replies']|length}}</div>
+                   <div class="media col-8 align-items-center">
+                    <div class="media-body flex-truncate ml-2">
+                       
+                       {% for reply in post.replies%}
+                       {% if loop.index == post['replies']|length%}
+                       <p class="line-height-1 small text-truncate" data-abc="true">By {{reply.author}}</p>
+                       <div class="text-muted small text-truncate">{{reply.date}}</div>
+                       {% endif%}
+                       {% endfor %}
+                    </div>
+                 </div>
                    
                 </div>
              </div>
           </div>
        </div>
+       
+       <hr class="m-0">
        {% endfor %}
 
-       <hr class="m-0">
        {% else %}
        <h1>No posts yet!</h1>
        {% endif %}

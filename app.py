@@ -24,6 +24,10 @@ def basic_auth(username, password):
     return f'Basic {token}'
 
 
+@app.context_processor
+def inject_today_date():
+    return {'today_date': datetime.now().strftime("%Y-%m-%d %H:%M")}
+
 @app.route('/', methods=['GET'])
 def index():
     categories = None
