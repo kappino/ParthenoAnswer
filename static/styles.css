@@ -10,7 +10,7 @@ body {
 }
 #logo {
 	width: 240px;
-	height: auto;	
+	height: auto;		
 }
 
 #wrapper {
@@ -66,11 +66,8 @@ table {
 nav{
 	width: 104%;
 	border-radius: 16px;
-	background-color:red;
 }
-.navbar{
-	background-color: white;
-}
+
 .bg-body-tertiary {
     --bs-bg-opacity: 50%!important;
     background-color:white!important;
