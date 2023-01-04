@@ -1,17 +1,11 @@
 :root  {
     --light_grey: #c4c4c4;
     --grey: #707070;
-    --white:#ffffff;
     --blue: #041caa;
-    --black:#050505;
-    --red: #e00a0a;
 }
 body {
-    margin: 0 auto;
-    min-height: 100%;
-    font-family: serif;
     background-color: var(--light_grey);
-    color: var(--black);
+    color: black;
 }
 #logo {
 	float: left;
@@ -19,33 +13,23 @@ body {
 	height: auto;	
 }
 
-
-.centered-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 #wrapper {
-	padding: 20px;	
+	padding: 100px;	
 	/* center the page */
 }
 #content {
-  border-bottom-left-radius: 16px;
+    border-bottom-left-radius: 16px;
 	border-bottom-right-radius: 16px;
-	border: 1px solid var(--black);
+	border: 1px solid black;
 	border-top: none;
-	background-color: var(--white);
+	background-color: white;
 	font-family: Arial;
 	padding: 20px 30px;
-	text-align: left;
-	width: 100%;				
+	text-align: left;			
 }
 
 #footer {
-	font-family: Arial;
-	font-size: 1em;
 	text-align: center;
-	color: var(--white);
 	background-color: var(--blue);
 	position: fixed;
 	left: 0px;
@@ -54,34 +38,26 @@ body {
 	width: 100%;
 }
 #menu {
-border-top-right-radius: 12px;
-border-top-left-radius: 12px;
-border: 1px solid var(--blue);
-border-bottom: none;		/* avoid a double border */
-clear: both;	
-margin: 0 auto;			/* clear:both makes sure the content div doesn't float next to this one but stays under it */
-width:100%;
-padding:0 30px;
-background-color: var(--white);
-text-align: center;
+	border-top-left-radius:16px;
+	border-top-right-radius:16px;
+	border: 1px solid var(--blue);
+	border-bottom: none;		/* avoid a double border */	
+	margin: 0 auto;			/* clear:both makes sure the content div doesn't float next to this one but stays under it */
+	padding:0 30px;
+	background-color: white;
 }
-#menu ul {
-	width: 100%;
-	margin: 0 auto;
-	list-style-type: none;
-	display: inline-block;
+
+.form-select{
+	background-color: var(--blue);
+	color: white;
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E")
 }
-#menu li {
-	float: left;
-	padding: 0px;
+th{
+	background-color: var(--blue);
+	color: white;
+
 }
-#userbar {
-	padding: 25px;
-	margin-left: 120px;
-	background-color: var(--white);
-	float: right;
-	width: 250px;
-}
-table {
-	width:90% ;	
+.centered-block{
+	margin-left: auto;
+	margin-right: auto;
 }
