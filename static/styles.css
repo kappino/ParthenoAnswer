@@ -42,7 +42,7 @@ body {
 	border: 1px solid var(--blue);
 	border-bottom: none;		/* avoid a double border */	
 	margin: 0 auto;			/* clear:both makes sure the content div doesn't float next to this one but stays under it */
-	padding:0 30px;
+	padding:0 20px;
 	background-color: white;
 }
 .form-select{
@@ -71,4 +71,12 @@ button{
 }
 .bg-body-tertiary {
     --bs-bg-opacity: 0;
+}
+td {
+    border: 1px solid var(--blue);
+}
+
+tr td:last-child {
+    width: 1%;
+    white-space: nowrap;
 }
