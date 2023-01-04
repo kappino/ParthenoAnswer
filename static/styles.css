@@ -59,29 +59,6 @@ th{
 	margin-left: auto;
 	margin-right: auto;
 }
-<<<<<<< HEAD
-
-.td_short {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 25px;
-  }
-
-.leftpart {
-	width: 70%;
-}
-
-.rightpart {
-	width: 70%;
-}
-
-
-  .table_short {
-	table-layout: fixed;
-	width: 100%
-  }
-=======
 table {
 	display: block;
 	margin-left: auto;
@@ -103,4 +80,3 @@ tr td:last-child {
     width: 1%;
     white-space: nowrap;
 }
->>>>>>> c7bcb388255fb05cae3540b0903d573f17006ae0
