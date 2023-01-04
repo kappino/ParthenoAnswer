@@ -46,7 +46,6 @@ body {
 	padding:0 30px;
 	background-color: white;
 }
-
 .form-select{
 	background-color: var(--blue);
 	color: white;
@@ -60,4 +59,7 @@ th{
 .centered-block{
 	margin-left: auto;
 	margin-right: auto;
+}
+table {
+	width:90% ;	
 }
