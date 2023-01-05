@@ -91,7 +91,7 @@ def sign_in():
                 if r.status_code == 200:
                     user = r.json()['user']
                     hashed_pass = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-                    db_users.insert_one({'username': username, 'password': hashed_pass, 'user_level': 0, 'user': user})
+                    db_users.insert_one({'username': username, 'password': hashed_pass, 'user_level': 0, 'user': user,"n_posts":0, 'login_date': datetime.now().strftime("%Y-%m-%d %H:%M")})
                     session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                     session['user_level'] = login_user['user_level']
                     r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/students/exams/"+str(login_user["user"]["trattiCarriera"][-1]["stuId"])+"/5",headers=headers)
@@ -224,9 +224,12 @@ def create_posts(subject):
             
             if esame_superato:
                 print("Esame Superato")
-                db_posts.insert_one({'title': post_title, 'content': post_content,'authorId': session['_id'] ,'author': session['username'],'subject': subject,'adsceId':code, 'date': datetime.now().strftime("%Y-%m-%d %H:%M"), 'esame_superato': 1})
+                db_posts.insert_one({'title': post_title, 'content': post_content,'authorId': session['_id'] ,'author': session['username'],'subject': subject,'adsceId':code, 'date': datetime.now().strftime("%Y-%m-%d %H:%M"), 'views':0, 'esame_superato': 1})
+                db_users.update({'_id': ObjectId(session["_id"])}, { "$set": { "n_posts" : int(1)} })
+                #db_users.find_one_and_update({'_id': ObjectId(session["_id"])}, { "$set": { "n_posts" : 1 } })   
             else:
-                db_posts.insert_one({'title': post_title, 'content': post_content,'authorId': session['_id'] ,'author': session['username'],'subject': subject,'adsceId':code, 'date': datetime.now().strftime("%Y-%m-%d %H:%M"), 'esame_superato': 0})
+                db_posts.insert_one({'title': post_title, 'content': post_content,'authorId': session['_id'] ,'author': session['username'],'subject': subject,'adsceId':code, 'date': datetime.now().strftime("%Y-%m-%d %H:%M"),'views':0, 'esame_superato': 0})
+                db_users.update({'_id': ObjectId(session["_id"])}, { "$inc": { "n_posts" : int(1) } })
         return "success"
     return render_template('create_posts.html') 
 
@@ -234,6 +237,8 @@ def create_posts(subject):
 def comments(id):
     print("Id comments", id)
     post = db_posts.find_one({"_id": ObjectId(id)})
+    db_posts.update({'_id': ObjectId(id)}, {'$inc': {'views': int(1)}})
+    author = db_users.find_one({"_id": ObjectId(post["authorId"])})
     if request.method == 'POST':
         print("TEST")
         comments_content = request.form.get('comments_content')
@@ -241,7 +246,7 @@ def comments(id):
             return "comment cannot be blank"    
         db_posts.update_one({ '_id': ObjectId(id) }, { '$push': { 'replies': { 'author' : session['username'],'content' : comments_content, 'date' :  datetime.now().strftime("%Y-%m-%d %H:%M") } } } )
         return "success"
-    return render_template('comments.html', post=post) 
+    return render_template('comments.html', post=post , author=author) 
 
 @app.route('/developers', methods=['GET', 'POST'])
 def developers():

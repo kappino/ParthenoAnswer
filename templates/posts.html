@@ -38,7 +38,7 @@
        <div class="card-header pl-0 pr-0">
           <div class="row no-gutters w-100 align-items-center">
              <div class="col ml-3">Topics</div>
-             <div class="col-4 text-muted">
+             <div class="col-4 ">
                 <div class="row no-gutters align-items-center">
                    <div class="col-4">Replies</div>
                    <div class="col-8">&nbsp;&nbsp;&nbsp;Last Reply</div>
@@ -55,7 +55,7 @@
                   <span class="badge badge-pill-sm badge-success" style="color:black; background-color: greenyellow ; ">Esame Superato  <i class="fa-regular fa-circle-check"></i></span>
                   {%endif%}
                 </a>
-                <div class="text-muted  mt-1"><a href="{{ url_for('show_profile', id=post['authorId']) }}">{{post["author"] }}</a></div>
+                <div class="  mt-1"><a href="{{ url_for('show_profile', id=post['authorId']) }}">{{post["author"] }}</a></div>
              </div>
              <div class="d-none d-md-block col-4">
                 <div class="row no-gutters align-items-center">
