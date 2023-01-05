@@ -36,7 +36,7 @@
           <div class="row no-gutters align-items-center">
              {% if last_post[loop.index-1]["title"] %}
              {% if session['username'] %}
-             <div class="white-text "><a href="{{ url_for('comments', id=last_post[loop.index0]['_id']) }}">&nbsp;&nbsp; {{ last_post[loop.index0]["title"] }} </a></b> <br>&nbsp;&nbsp; {{last_post[loop.index0]['subject'] }}</div>
+             <div class="white-text "><a href="{{ url_for('comments', id=last_post[loop.index0]['_id']) }}">&nbsp;&nbsp; {{ last_post[loop.index0]["title"] }} </a></b> <br>&nbsp;&nbsp;{{last_post[loop.index0]['subject'] }}</div>
              {% else %}
              <div class="white-text">&nbsp;&nbsp; {{ last_post[loop.index0]["title"] }}</b> <br>&nbsp;&nbsp; {{ last_post[loop.index0]['subject'] }}</div>
              {% endif %}
