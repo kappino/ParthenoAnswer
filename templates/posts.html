@@ -81,7 +81,7 @@
        {% endfor %}
 
        {% else %}
-       <h1>No posts yet!</h1>
+       <h1 id="centered-text">No posts yet!</h1>
        {% endif %}
 
   
@@ -96,8 +96,7 @@
           <li class="page-item"><a class="page-link" href="javascript:void(0)" data-abc="true">&raquo;</a></li>
        </ul>
     </nav>
-
-    {% if username=='Guest' %}
+    {% if username=='Guest'%}
     <h3>
         You are not logged in, as such your posts will display to public as "Guest".
         To log-in, please head to the "Profile" section.
@@ -105,12 +104,5 @@
 {% else %}
     <h3>You are logged in as "{{session["username"]}}", as such your username will be associated with the post.</h3>
 {% endif %}
-</h2>
-
- 
-
-</div>
-
-
 
 {% endblock %}
