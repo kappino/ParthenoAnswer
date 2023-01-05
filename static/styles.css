@@ -8,13 +8,17 @@ body {
     background-color: var(--light_grey);
     color: black;
 }
+/* */
 #logo {
 	max-width:70%; width:70%;
 	background-color: white;	
 }
 
 #logo1 {
-	max-width:100%; width:100%;
+	
+	padding: 5%;	
+    margin: 0 auto;/* center the page */
+	max-width:60%; width:60%;
 	background-color: white;	
 }
 #wrapper {
@@ -89,14 +93,16 @@ tr td:last-child {
 a{
 	color: black;
 	text-decoration: none;
-}
-.container {
+} 
+/* */
+.container {       
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
 	height: 100px;
 	object-fit: cover;
 }
+/* */
 .social {
 	position: relative;
 	display: inline-block;
@@ -105,15 +111,24 @@ a{
 	object-fit: cover;
 	margin-top: 50px;
 }
+/* */
 .contact {
 	position: relative;
 	display: inline-block;
-	width: 400px;
-	height: 400px;
+	width:500px;
+	height: 500px;
 	object-fit: cover;
-	margin-top: 100px;
+	margin-top: 50px;
 }
-
+/* */
+.contact2 {
+	position: relative;
+	display: inline-block;
+	width:30%;
+	height:30%;
+	object-fit: cover;
+	margin-top: 50px;
+}
 div.normal{
 	align-items: center;
 	width: 90%;
