@@ -171,7 +171,7 @@ def update_subj(id):
         if not existing_subj:
             test = db_categories.find_one({'_id': ObjectId(id)})
             if test["subject"] == ["None"]:
-                db_categories.update({"_id": ObjectId(id)},{ "$set": { "subject.0" : new_subj } })
+                db_categories.update({"_id": ObjectId(id)},{ "$set": { "subject.0" : new_subj, 'code.0': new_subj_code } })
             else:    
                 db_categories.update_one({'_id': ObjectId(id)}, {'$push': {'subject': new_subj,'code': new_subj_code}}, upsert = True)
             return "success"
