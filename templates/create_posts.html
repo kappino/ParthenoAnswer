@@ -18,5 +18,8 @@
           <h2 id="failure" style="color: var(--red)">Failure to submit! </h2>
     </div>
 </form>
+<blockquote class="blockquote text-center">
+<p class="mb-0">You are logged in as "{{session["username"]}}", as such your username will be associated with the post.</p>
+</blockquote>
 <script src="{{ url_for('static', filename='create_post.js') }}"></script>
 {% endblock %}

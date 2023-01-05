@@ -44,15 +44,7 @@
 {% else %}
     <h1>No Subjects yet!</h1>
 {% endif %}
-    {% if not session['username'] %}
-        <h3>
-            You are not logged in, as such your posts will display to public as "Guest".
-            To log-in, please head to the "Profile" section.
-        </h3>
-    {% else %}
-        <h3>You are logged in as "{{session['username']}}", as such your username will be associated with the post.</h3>
-    {% endif %}
-</h2>
+
 
 
 
