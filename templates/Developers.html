@@ -3,35 +3,50 @@
 {% block body %}
 <h2 class="blue-text" id="centered-text"><b>DEVELOPERS!</b></h2>
 <br>
-<br>
-<br>
-<div class="container-block">
-<div class="social">
-<img id=logo style="social" src="{{ url_for('static', filename='Aniello.jpg') }}"/>
-<h2 class="blue-text"><figcaption>Aniello Genovese</figcaption></h2>
+<div class="container-fluid" style="margin: 0 auto; width: 80%;">
+
+   <div class="row">
+      <div class="col">
+         <div class="card" style="width: 18rem; height: 450px;">
+            <img class="card-img-top" src="{{ url_for('static', filename='Crescenzo.jpg') }}" alt="Card image cap">
+            <div class="card-body text-center my-auto">
+              <h5 class="card-title">Crescenzo Esposito</h5>
+              <p class="card-text">Computer Science Student</p><br>
+              <a href="#" class="btn btn-primary">Profile</a>
+            </div>
+          </div>
+      </div>
+  
+      <div class="col">
+         <div class="card" style="width: 18rem; height: 450px;">
+            <img class="card-img-top" style="height: 288px; width: auto; object-fit: contain;" src="{{ url_for('static', filename='Aniello.jpg') }}" alt="Card image cap">
+            <div class="card-body text-center my-auto">
+              <h5 class="card-title">Aniello Genovese</h5>
+              <p class="card-text">Computer Science Student and Student Rapresentative</p>
+              <a href="#" class="btn btn-primary">Profile</a>
+            </div>
+          </div>
+      </div>
+
+      <div class="col">
+         <div class="card" style="width: 18rem; height: 450px;">
+            <img class="card-img-top" src="{{ url_for('static', filename='Riccardo.jpg') }}" alt="Card image cap">
+            <div class="card-body text-center my-auto">
+              <h5 class="card-title">Riccardo Aiello</h5>
+              <p class="card-text">Computer Science Student </p><br>
+              <a href="#" class="btn btn-primary" >Profile</a>
+            </div>
+          </div>
+         </div>
+   </div>
 </div>
-<div class="social">
-<img id=logo style="social" src="{{ url_for('static', filename='Riccardo.jpg') }}"/>
-<h2 class="blue-text"><figcaption>Riccardo Aiello</figcaption></h2>
-</div>
-<div class="social">
-<img id=logo style="social" src="{{ url_for('static', filename='Crescenzo.jpg') }}"/>
-<h2 class="blue-text"><figcaption>Crescenzo Esposito</figcaption></h2>
-</div>
-</div>
+   
+
 <div class="description">
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
    <br>
    <h2 class="blue-text" id="centered-text"> <text>
       Ecco gli sviluppatori di ParthenoAnswer, prossimi ad una esasperata laurea?
    </text></h2>
+   <br><br>
 </div>
 {%endblock%}
