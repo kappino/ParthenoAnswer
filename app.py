@@ -95,6 +95,10 @@ def sign_in():
                     login_user = db_users.find_one({'username': username})
                     session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                     session['user_level'] = login_user['user_level']
+                    session['_id'] = str(login_user["_id"])
+                    session['cf'] = username
+                    r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v2/students/myExams/"+str(login_user["user"]["trattiCarriera"][-1]["matId"]), headers=headers )                    
+                    db_users.update_one({"_id": login_user["_id"]}, {"$set": {"esami": r.json()}} )
                     r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/general/anagrafica/"+str(login_user["user"]["persId"]),headers=headers)
                     db_users.update_one({"_id": login_user["_id"]}, {"$set": {"personal_info": r.json()}} )
                     return jsonify("Utente trovato, Benvenuto!"),200
