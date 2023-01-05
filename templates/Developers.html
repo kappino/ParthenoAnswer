@@ -1,4 +1,24 @@
 {% extends "base.html" %}
 
 {% block body %}
-
+<div class="container">
+<div class="social">
+<img id=logo style="social" src="{{ url_for('static', filename='Aniello.jpg') }}"/>
+<figcaption>Aniello Genovese</figcaption>
+</div>
+<div class="social">
+<img id=logo style="social" src="{{ url_for('static', filename='Riccardo.jpg') }}"/>
+<figcaption>Riccardo Aiello</figcaption>
+</div>
+<div class="social">
+<img id=logo style="social" src="{{ url_for('static', filename='Crescenzo.jpg') }}"/>
+<figcaption>Crescenzo Esposito</figcaption>
+</div>
+</div>
+<div class="description">
+   <h2 class="blue-text" id="centered-text"><b>ABOUT US</b></h2>
+   <text>
+      TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText
+   </text>
+</div>
+{%endblock%}
