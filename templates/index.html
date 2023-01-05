@@ -44,7 +44,7 @@
              <div class="white-text"> &nbsp;&nbsp;&nbsp;No posts yet... </div>
              {% endif %}
              {% if session['user_level'] == 1 %}
-             <div class="white-text"><a class="item" href="{{ url_for('update_subj', id=category._id) }}"><button> sub-category </button></a></div>
+             <div class="white-text"><a href="{{ url_for('update_subj', id=category._id) }}">&nbsp;&nbsp;<button class="btn"> sub-category </button></a></div>
              {% endif %}
           </div>
        </div>
