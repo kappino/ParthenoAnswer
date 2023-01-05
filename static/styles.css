@@ -59,9 +59,6 @@ th{
 	margin-left: auto;
 	margin-right: auto;
 }
-
-
-
 table {
 	display: block;
 	margin-left: auto;
@@ -70,7 +67,6 @@ table {
 button{
 	background-color: var(--blue);
 	color: white;
-	border-radius: .375rem;
 }
 .bg-body-tertiary {
     --bs-bg-opacity: 0;
@@ -90,21 +86,20 @@ a{
 	color: black;
 	text-decoration: none;
 }
-
 .container {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 	height: 100px;
 	object-fit: cover;
 }
 .social {
 	position: relative;
 	display: inline-block;
-	width: 90px;
-	height: 90px;
+	width: 150px;
+	height: 150px;
 	object-fit: cover;
-	margin-top: 10px;
+	margin-top: 50px;
 }
 div.normal{
 	align-items: center;
@@ -112,12 +107,22 @@ div.normal{
 	word-break: break-all;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 50px;
+	margin-top: 70px;
 }
 .col.ml-3, .col-lg-10{
-
 	color: white;
 }
 .card-header{
 	background-color: var(--blue);
+}
+.blue-text{
+	color: var(--blue);
+}
+#centered-text{
+	text-align: center;
+	word-break: break-word;
+}
+.btn{
+	background-color: var(--blue);
+	color: white;
 }

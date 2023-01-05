@@ -106,7 +106,6 @@ def sign_in():
 def sign_out():
     session.pop('username')
     session.pop('user_level')   
-    session.pop('_id')
     return redirect('/profile')
 
 @app.route('/create_cat', methods=['POST'])

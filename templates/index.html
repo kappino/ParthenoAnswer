@@ -21,7 +21,7 @@
        <div class="col ml-3"><b>Category</b></div>
        <div class="col-4 text-muted">
           <div class="row no-gutters align-items-center">
-             <div class="col-lg-10">&nbsp;&nbsp;&nbsp;<b>Last Post</b></div>
+             <div class="white-text">&nbsp;&nbsp;&nbsp;<b>Last Post</b></div>
           </div>
        </div>
     </div>
@@ -36,31 +36,25 @@
           <div class="row no-gutters align-items-center">
              {% if last_post[loop.index-1]["title"] %}
              {% if session['username'] %}
-             <div class="col-lg-10"><a href="{{ url_for('comments', id=last_post[loop.index0]['_id']) }}">{{ last_post[loop.index0]["title"] }} </a></b> <br> {{ last_post[loop.index0]['subject'] }}</div>
+             <div class="white-text"><a href="{{ url_for('comments', id=last_post[loop.index0]['_id']) }}">{{ last_post[loop.index0]["title"] }} </a></b> <br> {{ last_post[loop.index0]['subject'] }}</div>
              {% else %}
-             <div class="col-lg-10">{{ last_post[loop.index0]["title"] }}</b> <br> {{ last_post[loop.index0]['subject'] }}</div>
+             <div class="white-text">{{ last_post[loop.index0]["title"] }}</b> <br> {{ last_post[loop.index0]['subject'] }}</div>
              {% endif %}
              {% else %}
-             <td class="rightpart"> &nbsp;&nbsp;&nbsp;No posts yet... </td>
+             <td>No posts yet</td>
              {% endif %}
-             
           </div>
        </div>
     </div>
  </div>
  <hr class="m-0">
-
  {% endfor %}
 
- 
 {% else %}
-No categories yet!
+No category yet!
 {% endif %}
-
-
 </div>
 </div>
-
 <script src="{{ url_for('static', filename='create_cat.js') }}"></script>
 <script src="{{ url_for('static', filename='register_sw.js') }}"></script>
 {% endblock %}
