@@ -120,7 +120,7 @@ def create_cat() :
         cat_desc = request.form.get('cat_desc')
         existing_cat = db_categories.find_one({'cat_name': cat_name})
         if not existing_cat:
-            db_categories.insert_one({'cat_name': cat_name, 'cat_desc': cat_desc,'subject': ["None"]})
+            db_categories.insert_one({'cat_name': cat_name, 'cat_desc': cat_desc,'subject': ["None"],'code': ["None"]})
             return "success"
         return "Category already exists!"
     return render_template('create_cat.html')
@@ -171,7 +171,7 @@ def update_subj(id):
         if not existing_subj:
             test = db_categories.find_one({'_id': ObjectId(id)})
             if test["subject"] == ["None"]:
-                db_categories.update({"_id": ObjectId(id)},{ "$set": { "subject.0" : new_subj, 'code.0': new_subj_code } })
+                db_categories.update_one({"_id": ObjectId(id)},{ "$set": { "subject.0" : new_subj, 'code.0': new_subj_code } })
             else:    
                 db_categories.update_one({'_id': ObjectId(id)}, {'$push': {'subject': new_subj,'code': new_subj_code}}, upsert = True)
             return "success"
@@ -219,7 +219,6 @@ def create_posts(subject):
         if login_user:
             esami = db_users.find_one({'_id': ObjectId(session["_id"])})
             for esame in esami["esami"]:
-                print(code, esame["adsceID"], esame["status"]["esito"])
                 if str(esame["adsceID"]) == str(code):
                     print("sono uguali")
                     if esame["status"]["esito"]=="S":
@@ -230,11 +229,11 @@ def create_posts(subject):
             if esame_superato:
                 print("Esame Superato")
                 db_posts.insert_one({'title': post_title, 'content': post_content,'authorId': session['_id'] ,'author': session['username'],'subject': subject,'adsceId':code, 'date': datetime.now().strftime("%Y-%m-%d %H:%M"), 'views':0, 'esame_superato': 1})
-                db_users.update({'_id': ObjectId(session["_id"])}, { "$set": { "n_posts" : int(1)} })
+                db_users.update_one({'_id': ObjectId(session["_id"])}, { "$set": { "n_posts" : int(1)} })
                 #db_users.find_one_and_update({'_id': ObjectId(session["_id"])}, { "$set": { "n_posts" : 1 } })   
             else:
                 db_posts.insert_one({'title': post_title, 'content': post_content,'authorId': session['_id'] ,'author': session['username'],'subject': subject,'adsceId':code, 'date': datetime.now().strftime("%Y-%m-%d %H:%M"),'views':0, 'esame_superato': 0})
-                db_users.update({'_id': ObjectId(session["_id"])}, { "$inc": { "n_posts" : int(1) } })
+                db_users.update_one({'_id': ObjectId(session["_id"])}, { "$inc": { "n_posts" : int(1) } })
         return "success"
     return render_template('create_posts.html') 
 

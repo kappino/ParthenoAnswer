@@ -1,11 +1,19 @@
 {% if session['user_level']==1 %}
-<div style="padding-left: 6%;">
-Name
-<input type="text" name="cat_name" id="cat_name" placeholder="New category name.." spellcheck="false"  value="{{ cat_name }}">
-Description
-<input type="text" id="cat_desc" name="cat_desc" spellcheck="false" placeholder="Description..." value="{{ cat_desc }}">
-<input type="submit" value="{{ submit_text }}">
-<h2 id="success" style="color: var(--yellow)">Successfully submitted!</h2>
-<h2 id="failure" style="color: var(--red)">Failure to submit! </h2>
+
+<div style="width: 90%;margin: 0 auto;">
+        
+    <div class="mb-3">
+        <label class="form-label">Post Title</label>
+        <input class="form-control" type="text" name="cat_name" id="cat_name" spellcheck="false"  value="{{ cat_name }}">
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Post Content</label>
+        <textarea class="form-control" id="cat_desc" rows="3"></textarea>
+      </div>
+      <input class="btn" type="submit" value="Submit">
+
+      <h2 id="success" style="color: var(--black)">Successfully submitted!</h2>
+      <h2 id="failure" style="color: var(--red)">Failure to submit! </h2>
 </div>
+
 {% endif %}
