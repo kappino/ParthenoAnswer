@@ -95,13 +95,14 @@ a{
 	text-decoration: none;
 } 
 /* */
-.container {       
+.container-block {       
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
 	height: 100px;
 	object-fit: cover;
 }
+
 /* */
 .social {
 	position: relative;

@@ -92,10 +92,11 @@ def sign_in():
                     user = r.json()['user']
                     hashed_pass = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
                     db_users.insert_one({'username': username, 'password': hashed_pass, 'user_level': 0, 'user': user,"n_posts":0, 'login_date': datetime.now().strftime("%Y-%m-%d %H:%M")})
+                    login_user = db_users.find_one({'username': username})
                     session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                     session['user_level'] = login_user['user_level']
-                    r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/students/exams/"+str(login_user["user"]["trattiCarriera"][-1]["stuId"])+"/5",headers=headers)
-                    db_users.update_one({"_id": login_user["_id"]}, {"$set": {"esami": r.json()}} )
+                    r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v1/general/anagrafica/"+str(login_user["user"]["persId"]),headers=headers)
+                    db_users.update_one({"_id": login_user["_id"]}, {"$set": {"personal_info": r.json()}} )
                     return jsonify("Utente trovato, Benvenuto!"),200
                 else:
                     return jsonify("Credenziali Sbagliate!"),401
