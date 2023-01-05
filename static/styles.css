@@ -13,6 +13,10 @@ body {
 	background-color: white;	
 }
 
+#logo1 {
+	max-width:100%; width:100%;
+	background-color: white;	
+}
 #wrapper {
 	padding: 5%;	
 	margin: 0 auto;/* center the page */
@@ -101,6 +105,15 @@ a{
 	object-fit: cover;
 	margin-top: 50px;
 }
+.contact {
+	position: relative;
+	display: inline-block;
+	width: 400px;
+	height: 400px;
+	object-fit: cover;
+	margin-top: 100px;
+}
+
 div.normal{
 	align-items: center;
 	width: 90%;
