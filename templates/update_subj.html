@@ -4,14 +4,21 @@
 
 {% if session['user_level']==1 %}
 <form id="post" method="post">
-    <div>
-        Subject Name
-        <input type="text" name="new_subj" id="new_subj" placeholder="New subject name.." spellcheck="false"  value="{{ new_subj }}">
-        <input type="submit" value="Add">
+    <div style="width: 90%; margin: 0 auto;">
+        <div class="mb-3">
+        <label class="form-label">Subject Name</label>
+        <input class="form-control" type="text" name="new_subj" id="new_subj" placeholder="New subject name.." spellcheck="false"  value="{{ new_subj }}">
+        </div>
+        <div class="mb-3">
+        <label  class="form-label">Subject Adsceid</label>
+        <input class="form-control" type="text" name="new_subj_code" id="new_subj_code" placeholder="New subject code.." spellcheck="false"  value="{{ new_subj_code }}">
+        </div>
+        <input class="btn" type="submit" value="Add">
         <h2 id="success" style="color: var(--black)">Successfully submitted!</h2>
         <h2 id="failure" style="color: var(--red)">Failure to submit! </h2>
         </div>
 </form>
+
 {% else %}
 <h1>You have no permission!</h1>
 {% endif %}

@@ -13,7 +13,8 @@ $(document).ready(function () {
         type: 'POST',
         url: window.location.href,
         data: {
-        new_subj: $("#new_subj").val()
+        new_subj: $("#new_subj").val(),
+        new_subj_code: $("#new_subj_code").val()
     },
     success: (result) => {
         successText.hide();

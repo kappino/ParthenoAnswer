@@ -13,7 +13,7 @@
 
 {% if session['username'] %}
         
-<a href="{{ url_for('create_posts', subject=subject) }}"> <button type="button"  style="margin-left: 30px;" class="btn btn-shadow btn btn-primary">
+<a href="{{ url_for('create_posts', subject=subject , code=code) }}"> <button type="button"  style="margin-left: 30px;" class="btn btn-shadow btn btn-primary">
  <span class="btn-icon-wrapper pr-2 opacity-7">
  <i class="fa fa-plus fa-w-20"></i>
  </span>
@@ -22,7 +22,6 @@
  {% endif %}
 
 {% if posts %}
-
 
 <div class="container-fluid mt-100">
      
@@ -51,7 +50,11 @@
        <div class="card-body py-3">
           <div class="row no-gutters align-items-center">
              <div class="col">
-                <a  href="{{ url_for('comments', id=post['_id']) }}"  class="text-big" data-abc="true">{{ post["title"] }}</a>
+                <a  href="{{ url_for('comments', id=post['_id']) }}"  class="text-big" data-abc="true"><b>{{ post["title"] }}</b>
+                  {% if post["esame_superato"] == 1 %}
+                  <span class="badge badge-pill-sm badge-success" style="color:black; background-color: greenyellow ; ">Esame Superato  <i class="fa-regular fa-circle-check"></i></span>
+                  {%endif%}
+                </a>
                 <div class="text-muted  mt-1"><a href="{{ url_for('show_profile', id=post['authorId']) }}">{{post["author"] }}</a></div>
              </div>
              <div class="d-none d-md-block col-4">

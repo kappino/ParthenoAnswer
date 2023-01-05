@@ -79,7 +79,6 @@ def sign_in():
                 session['username'] = login_user["user"]["firstName"].title() + " " + login_user["user"]["lastName"].title()
                 session['cf'] = username
                 session['user_level'] = login_user['user_level']
-                print(login_user["_id"])
                 session['_id'] = str(login_user["_id"])
                 r = requests.get("https://api.uniparthenope.it/UniparthenopeApp/v2/students/myExams/"+str(login_user["user"]["trattiCarriera"][-1]["matId"]), headers=headers )                    
                 db_users.update_one({"_id": login_user["_id"]}, {"$set": {"esami": r.json()}} )
@@ -134,11 +133,13 @@ def sw():
 @app.route('/view_post/<string:subject>')
 def view_post(subject):
     print(subject)
+    code = request.args.get('code')
+    print(code)
     posts = list(db_posts.find({'subject': subject }))
     logged_in = False
     if 'username' in session:
         logged_in = True
-    return render_template('posts.html', logged_in=logged_in, posts=posts, subject=subject)
+    return render_template('posts.html', logged_in=logged_in, posts=posts, subject=subject, code=code)
 
 @app.route('/view_subc/<string:id>')
 def view_subc(id):
@@ -146,6 +147,7 @@ def view_subc(id):
     subc = db_categories.find_one({"_id": ObjectId(id)})
     if subc['subject'][0] != None:
         subjects = subc['subject']
+        code = subc['code']
         last_post=[]
         for subject in subjects:
             last_post.append(db_posts.find_one({'subject': subject}, sort=[('date',-1)]))
@@ -153,21 +155,20 @@ def view_subc(id):
         subjects = None
         last_post = None
 
-    return render_template('subject.html', subjects=subjects, last_post=last_post)
+    return render_template('subject.html', subjects=subjects, last_post=last_post , code=code)
 
 @app.route('/update_subj/<string:id>', methods=['GET','POST'])
 def update_subj(id):
     if request.method == 'POST':
         new_subj = request.form.get('new_subj')
+        new_subj_code = request.form.get('new_subj_code')
         existing_subj = db_categories.find_one({'subject': new_subj})
         if not existing_subj:
             test = db_categories.find_one({'_id': ObjectId(id)})
-            print ("Test: ",test)
             if test["subject"] == ["None"]:
-                db_categories.update({"_id": ObjectId(id)},{ "$set": { "subject.0" : new_subj } }
-)
+                db_categories.update({"_id": ObjectId(id)},{ "$set": { "subject.0" : new_subj } })
             else:    
-                db_categories.update_one({'_id': ObjectId(id)}, {'$push': {'subject': new_subj}}, upsert = True)
+                db_categories.update_one({'_id': ObjectId(id)}, {'$push': {'subject': new_subj,'code': new_subj_code}}, upsert = True)
             return "success"
         return "Subject already exists!"
     return render_template('update_subj.html')
@@ -198,8 +199,10 @@ def search():
 
 @app.route('/create_posts/<string:subject>', methods=['GET','POST'])
 def create_posts(subject):
-    print("Id create_post", subject)
+    code = request.args.get('code')
+    print("Id create_post", subject, code)
     if request.method == 'POST':
+        esame_superato = False
         print("TEST")
         post_title = request.form.get('post_title')
         if not post_title:
@@ -207,7 +210,23 @@ def create_posts(subject):
         post_content = request.form.get('post_content')
         if not post_content:
             return "Content cannot be blank"
-        db_posts.insert_one({'title': post_title, 'content': post_content,'authorId': session['_id'] ,'author': session['username'],'subject': subject, 'date': datetime.now().strftime("%Y-%m-%d %H:%M")})
+        login_user = db_users.find_one({'_id': ObjectId(session["_id"])})
+        if login_user:
+            esami = db_users.find_one({'_id': ObjectId(session["_id"])})
+            for esame in esami["esami"]:
+                print(code, esame["adsceID"], esame["status"]["esito"])
+                if str(esame["adsceID"]) == str(code):
+                    print("sono uguali")
+                    if esame["status"]["esito"]=="S":
+                        print("esame superato")
+                        esame_superato = True
+                        break
+            
+            if esame_superato:
+                print("Esame Superato")
+                db_posts.insert_one({'title': post_title, 'content': post_content,'authorId': session['_id'] ,'author': session['username'],'subject': subject,'adsceId':code, 'date': datetime.now().strftime("%Y-%m-%d %H:%M"), 'esame_superato': 1})
+            else:
+                db_posts.insert_one({'title': post_title, 'content': post_content,'authorId': session['_id'] ,'author': session['username'],'subject': subject,'adsceId':code, 'date': datetime.now().strftime("%Y-%m-%d %H:%M"), 'esame_superato': 0})
         return "success"
     return render_template('create_posts.html') 
 
