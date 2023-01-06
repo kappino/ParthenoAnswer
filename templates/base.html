@@ -14,9 +14,9 @@
     <title>ParthenopeAnswer - Community degli Studenti</title>
 </head>
 <body>
-    <nav class="navbar" style="background-color: blue;">
+    <nav class="navbar">
         <div class="container-fluid">
-            <a href="{{ url_for('index') }}"><img id=logo style="width: 8%;" src="{{ url_for('static', filename='logop.png') }}"/></a>
+            <a href="{{ url_for('index') }}"><img aria-hidden="true" id=logo src="{{ url_for('static', filename='logop.png') }}"/></a>
                 <form class="d-flex" method="post" action="{{ url_for('search') }}">
                     <select class="form-select" name="id_search">
                     <option value= "topics"> topic </option>
