@@ -5,13 +5,11 @@
 	--light_blue: #4157d6;
 }
 body {
-    background-color: var(--light_grey);
-    color: black;
+    background-color: rgb(40, 67, 208) ;
 }
 /* */
 #logo {
-	max-width:70%; width:70%;
-	background-color: white;	
+	width: 100px;
 }
 
 #logo1 {
@@ -19,7 +17,6 @@ body {
 	padding: 5%;	
     margin: 0 auto;/* center the page */
 	max-width:60%; width:60%;
-	background-color: white;	
 }
 #wrapper {
 	padding: 5%;	
@@ -34,7 +31,12 @@ body {
 	font-family: Arial;
 	text-align: left;			
 }
-
+.navbar{
+	background-color:white;
+	outline: 200cm;
+	border-bottom: 4px solid lightblue;
+	box-shadow: 0 0 15px 0 rgba(0,0,0,.8) inset;
+}
 #footer {
 	text-align: center;
 	background-color: var(--blue);
@@ -43,14 +45,13 @@ body {
 	bottom: 0px;
 	height: 30px;
 	width: 100%;
+	box-shadow: 0 0 15px 0 rgba(0,0,0,.8) inset;
 }
 #menu {
 	border-top-left-radius:16px;
 	border-top-right-radius:16px;
 	border: 1px solid var(--blue);
 	border-bottom: none;		/* avoid a double border */	
-	margin: 0 auto;			/* clear:both makes sure the content div doesn't float next to this one but stays under it */
-	padding:0 20px;
 	background-color: white;
 }
 .form-select{
@@ -76,7 +77,7 @@ button{
 	background-color: var(--blue);
 	color: white;
 }
-.bg-body-tertiary {
+.tertiary {
     --bs-bg-opacity: 0;
 }
 td {
@@ -138,7 +139,7 @@ div.normal{
 	margin-right: auto;
 	margin-top: 70px;
 }
-.col.ml-3, .col-lg-10{
+.ml-3, .lg-10{
 	color: white;
 }
 .card-header{
