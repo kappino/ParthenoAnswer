@@ -14,28 +14,28 @@
     <title>ParthenopeAnswer - Community degli Studenti</title>
 </head>
 <body>
+    <nav class="navbar" style="background-color: blue;">
+        <div class="container-fluid">
+            <a href="{{ url_for('index') }}"><img id=logo style="width: 8%;" src="{{ url_for('static', filename='logop.png') }}"/></a>
+                <form class="d-flex" method="post" action="{{ url_for('search') }}">
+                    <select class="form-select" name="id_search">
+                    <option value= "topics"> topic </option>
+                    <option value= "users"> user </option>
+                    <input type="text" placeholder="Search anything" name="search">
+                    <button type="submit" name="submit"><i class="fa fa-fw fa-search"></i></button>
+                </form>             
+          <div id="userbar">
+            {% if session['username'] %}
+                Hello <a href="{{ url_for('profile') }}"><b>{{session['username']}}</b></a>. Not you? <a href="{{ url_for('sign_out')}}"><button class="btn btn-sm btn-primary">Sign out</button></a>
+            {% else %}
+            <a href="{{ url_for('sign_in') }}"><button class="btn btn-sm btn-primary" >Sing In</button></a>
+            {% endif %}
+            </div>
+        
+        </div>
+      </nav>
     <div id="wrapper">
     <div id="menu">
-        <nav class="navbar">
-            <div class="container-fluid">
-                <a href="{{ url_for('index') }}"><img id=logo src="{{ url_for('static', filename='logo.png') }}"/></a>
-                    <form class="d-flex" method="post" action="{{ url_for('search') }}">
-                        <select class="form-select" name="id_search">
-                        <option value= "topics"> topic </option>
-                        <option value= "users"> user </option>
-                        <input type="text" placeholder="Search anything" name="search">
-                        <button type="submit" name="submit"><i class="fa fa-fw fa-search"></i></button>
-                    </form>             
-              <div id="userbar">
-                {% if session['username'] %}
-                    Hello <a href="{{ url_for('profile') }}"><b>{{session['username']}}</b></a>. Not you? <a href="{{ url_for('sign_out')}}"><button class="btn btn-sm btn-primary">Sign out</button></a>
-                {% else %}
-                <a href="{{ url_for('sign_in') }}"><button class="btn btn-sm btn-primary" >Sing In</button></a>
-                {% endif %}
-                </div>
-            
-            </div>
-          </nav>
           <button type="button" class="btn btn-sm btn-primary" style="margin-left: 30px;" onClick="history.back();" ><i class="fa-solid fa-arrow-left"></i> go back</button>
             <br><br>    
         </div>
