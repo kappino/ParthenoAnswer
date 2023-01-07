@@ -45,33 +45,32 @@ body {
 	box-shadow: 0 0 15px 0 rgba(0,0,0,.8) inset;
 }
 #menu {
-	border-top-left-radius:16px;
-	border-top-right-radius:16px;
+	border-top-left-radius:18px;
+	border-top-right-radius:18px;
 	border: 1px solid var(--blue);
 	border-bottom: none;		/* avoid a double border */	
 	background-color: white;
 }
 .form-select{
-	background-color: var(--blue);
-	color: white;
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='white' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E")
 }
-th{
+th, .form-select{
 	background-color: var(--blue);
 	color: white;
 
 }
-.centered-block{
+.centered-block, table{
 	margin-left: auto;
 	margin-right: auto;
 }
 table {
 	display: block;
-	margin-left: auto;
-	margin-right: auto	
+
 }
-button{
-	background-color: var(--blue);
+#pillow, .btn{
+	border-radius: 18px;
+}
+.btn{
 	color: white;
 }
 .tertiary {
@@ -81,26 +80,18 @@ td {
     border: 1px solid var(--blue);
 }
 
-tr td:last-child {
-    width: 1%;
-    white-space: nowrap;
-}
-.btn-primary{
-	background-color: var(--blue);
-}
 a{
 	color: black;
 	text-decoration: none;
 } 
 /* */
-.container-block {       
+.container-block {    
 	display: flex;
 	align-items: center;
 }
 figcaption{
 	font-size: x-large;
 }
-
 /* */
 .social {
 	position: relative;
@@ -116,7 +107,6 @@ figcaption{
 	
 	object-fit: cover;
 	margin-top: 50px;
-	text-align: center;
 }
 /* */
 
@@ -128,10 +118,10 @@ div.normal{
 	margin-right: auto;
 	margin-top: 70px;
 }
-.ml-3, .lg-10{
+.btn{
 	color: white;
 }
-.card-header{
+.card-header, .btn{
 	background-color: var(--blue);
 }
 .blue-text{
@@ -141,14 +131,10 @@ div.normal{
 	text-align: center;
 	word-break: break-word;
 }
-.btn{
-	background-color: var(--blue);
-	color: white;
-}
 
 .card{box-shadow: 0 0.46875rem 2.1875rem rgba(4,9,20,0.03), 0 0.9375rem 1.40625rem rgba(4,9,20,0.03), 0 0.25rem 0.53125rem rgba(4,9,20,0.05), 0 0.125rem 0.1875rem rgba(4,9,20,0.03);border-width: 0;transition: all .2s}
 .card-header:first-child{border-radius: calc(.60rem - 1px) calc(.60rem - 1px) 0 0}
 .card-header{color: white !important;display: flex;align-items: center;border-bottom-width: 1px;padding-top: 0;padding-bottom: 0;padding-right: .625rem;height: 3.5rem;border-bottom: 1px solid rgba(26,54,126,0.125)}
-.btn{font-size: 0.8rem;font-weight: 500;outline: none !important;position: relative;transition: color 0.15s,background-color 0.15s,border-color 0.15s,box-shadow 0.15s}
+.btn{font-size: 0.8rem;font-weight: 500;outline: none !important;position: relative;transition: color 0.15s}
 .card-body{flex: 1 1 auto;padding: 1.25rem}.card-body p{font-size: 13px}a{color: #000000;text-decoration: none !important;background-color: transparent}
 .media img{width: 40px;height: 40px}
