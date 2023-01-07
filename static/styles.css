@@ -26,13 +26,22 @@ body {
 	border-top: none;
 	background-color: white;
 	font-family: Arial;
-	text-align: left;			
+	text-align: left;
+}
+input{
+	border: 0 solid;
 }
 .navbar{
 	background-color:white;
 	outline: 200cm;
 	border-bottom: 4px solid lightblue;
 	box-shadow: 0 0 15px 0 rgba(0,0,0,.8) inset;
+}
+#search{
+	display:flex;
+	flex-direction:row;
+	border:1px solid black;
+	border-radius: 18px;
 }
 #footer {
 	text-align: center;

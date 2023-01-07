@@ -17,11 +17,11 @@
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ url_for('index') }}"><img aria-hidden="true" id=logo src="{{ url_for('static', filename='logop.png') }}"/></a>
-                <form class="d-flex" method="post" action="{{ url_for('search') }}">
+                <form class="d-flex" id="search" method="post" action="{{ url_for('search') }}">
                     <select class="form-select" id="pillow" name="id_search">
                     <option value= "topics"> topic </option>
                     <option value= "users"> user </option>
-                    <input id="pillow" type="text" placeholder=" Search anything" name="search">
+                    <input type="text" placeholder=" Search anything" name="search">
                     <button class="btn" type="submit" name="submit"><i class="fa fa-fw fa-search"></i></button>
                 </form>             
           <div id="userbar">
