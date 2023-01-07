@@ -13,14 +13,11 @@ body {
 }
 
 #logo1 {
-	
-	padding: 5%;	
-    margin: 0 auto;/* center the page */
 	max-width:60%; width:60%;
 }
 #wrapper {
 	padding: 5%;	
-	margin: 0 auto;/* center the page */
+	margin: auto auto;/* center the page */
 }
 #content {
     border-bottom-left-radius: 16px;
@@ -99,17 +96,15 @@ a{
 .container-block {       
 	display: flex;
 	align-items: center;
-	justify-content: space-evenly;
-	height: 100px;
-	object-fit: cover;
+}
+figcaption{
+	font-size: x-large;
 }
 
 /* */
 .social {
 	position: relative;
 	display: inline-block;
-	width: 250px;
-	height: 250px;
 	object-fit: cover;
 	margin-top: 50px;
 }
@@ -118,19 +113,13 @@ a{
 	position: relative;
 	display: inline-block;
 	width:500px;
-	height: 500px;
+	
 	object-fit: cover;
 	margin-top: 50px;
+	text-align: center;
 }
 /* */
-.contact2 {
-	position: relative;
-	display: inline-block;
-	width:30%;
-	height:30%;
-	object-fit: cover;
-	margin-top: 50px;
-}
+
 div.normal{
 	align-items: center;
 	width: 90%;
