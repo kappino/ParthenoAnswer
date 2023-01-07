@@ -113,9 +113,9 @@ figcaption{
 	position: relative;
 	display: inline-block;
 	width:500px;
-	
 	object-fit: cover;
 	margin-top: 50px;
+	text-align: center;
 }
 /* */
 
