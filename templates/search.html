@@ -5,22 +5,44 @@
 {% block body %}
 {% if posts %}
 <div style="width: 95%">
-    <table>
-        <tr>
-            <th>Post</th>
-            <th>Created by</th>
-            
-        </tr>
-        {% for post in posts  %}
-        <tr>
-            <td class="leftpart"><b>{{ post["title"] }}</b><br>{{ post["content"] }}</td>
-            <td class="rightpart"><b>{{ post["author"] }}</b> <br> {{post["date"]}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+<div class="card mb-3" style="width: 90%; margin: 0 auto;">
+ <div class="card-header pl-0 pr-0">
+    <div class="row no-gutters w-100 align-items-center">
+       <div class="col ml-3">Post</div>
+          <div class="row no-gutters align-items-center">
+             &nbsp;&nbsp;&nbsp;Created by
+          </div>
+    </div>
+ </div>
+ {% for post in posts  %}
+       <div class="card-body py-3">
+          <div class="row no-gutters align-items-center">
+             <div class="col">
+                <a  href="{{ url_for('comments', id=post['_id']) }}"  class="text-big" data-abc="true"><b>{{ post["title"] }}</b>
+
+                </a>
+                <div class="  mt-1">{{ post["content"] }}</div>
+             </div>
+             <div class="d-none d-md-block col-4">
+                <div class="row no-gutters align-items-center">
+                   <div class="media col-8 align-items-center">
+                    <div class="media-body flex-truncate ml-2">
+                
+                       <p class="line-height-1 small text-truncate" data-abc="true"><a href="{{ url_for('show_profile', id=post['authorId']) }}">{{post["author"] }}</a></p>
+                       <div class="text-muted small text-truncate">{{post["date"]}}</div>
+                    </div>
+                   </div>
+             {% else %}
+             <div> &nbsp;&nbsp;&nbsp;No posts yet... </div>
+
+          </div>
+       </div>
+    </div>
+ </div>
+ <hr class="m-0">
+ {% endfor %}
 {% else %}
-    <h1>No Sub Categories yet!</h1>
+    <h1>No posts yet!</h1>
 {% endif %}
     <script src="static/search_posts.js"></script>
 {% endblock %}
