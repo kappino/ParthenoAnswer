@@ -17,6 +17,15 @@
     <nav class="navbar">
         <div class="container-fluid">
             <a href="{{ url_for('index') }}"><img aria-hidden="true" id=logo src="{{ url_for('static', filename='logop.png') }}"/></a>
+        </a>
+        <!-- Dropdown menu -->
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </li>
                 <form class="d-flex" method="post" action="{{ url_for('search') }}">
                     <select class="form-select" name="id_search">
                     <option value= "topics"> topic </option>
