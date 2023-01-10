@@ -15,10 +15,6 @@ Features:
 -User profile page created using "Parthenope" API showing personal info and passed exams
 
 
-Future implementations
-
--Settings section to modify each information shown
--
 
 HOW TO RUN: 
 
