@@ -10,6 +10,8 @@ Features:
 
 -Admin user role (same permissions as a standard user with the added possibility to add categories(usually academic year) and inside each category a different subcategory(subject)
 
+-When there is user=1 in Database, this is an admin, elseo if the user is = 0 it will not have the necessary permissions for categories or sub-categories. (IT IS VERY IMPORTANT!) 
+
 -Badge to show if a user has passed the exam for the related post
 
 -User profile page created using "Parthenope" API showing personal info and passed exams
