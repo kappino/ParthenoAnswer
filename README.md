@@ -10,6 +10,7 @@ Features:
 
 Future implementations
 -Settings section to modify each information shown
+-
 
 HOW TO RUN: 
 To run the web app locally, follow these instructions:
