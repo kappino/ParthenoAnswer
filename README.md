@@ -1,7 +1,9 @@
 # ParthenoAnswer
 This is a project for "web technologies" exam at the Parthenope University of Naples. The authors of this project are Aiello Riccardo, Esposito Crescenzo and the student representative Genovese Aniello.
 
+
 Features:
+
 -Authentication system using University of Naples "Parthenope" API (base64 encoding), giving access only with the university credentials
 
 -Standard user role (permissions to create posts and add replies)
