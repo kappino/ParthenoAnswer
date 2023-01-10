@@ -1,6 +1,16 @@
 # ParthenoAnswer
 This is a project for "web technologies" exam at the Parthenope University of Naples. The authors of this project are Aiello Riccardo, Esposito Crescenzo and the student representative Genovese Aniello.
 
+Features:
+-Authentication system using University of Naples "Parthenope" API (base64 encoding), giving access only with the university credentials
+-Standard user role (permissions to create posts and add replies)
+-Admin user role (same permissions as a standard user with the added possibility to add categories(usually academic year) and inside each category a different subcategory(subject)
+-Badge to show if a user has passed the exam for the related post
+-User profile page created using "Parthenope" API showing personal info and passed exams
+
+Future implementations
+-Settings section to modify each information shown
+
 HOW TO RUN: 
 To run the web app locally, follow these instructions:
 1) Pull the project and link correctly the Python interpreter for the virtual environment.
