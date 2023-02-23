@@ -7,7 +7,14 @@
 body {
     background-color: rgb(40, 67, 208);
 }
+
 /* */
+#toggleDark{
+	color: white;
+	cursor: pointer;
+	position: absolute;
+	left: 1%;
+}
 #logo {
 	width: 300px;
 }

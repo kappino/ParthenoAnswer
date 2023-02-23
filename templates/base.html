@@ -9,6 +9,8 @@
     <script src="https://kit.fontawesome.com/7a0c032330.js" crossorigin="anonymous"></script>    
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script src="{{ url_for('static', filename='jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     {% block head %}
     {% endblock %}
     <title>ParthenopeAnswer - Community degli Studenti</title>
@@ -43,7 +45,10 @@
     {% block body %}<!--commento di prova--> 
     {% endblock %}
         </div> <!--content-->
+
+        
     </div> <!--wrapper--> 
-    <a href="{{ url_for('developers') }}"><div id="footer" action=ìì>  <input type="button" class="btn btn-sm btn-primary" value="Developers" action=ìì></a> &nbsp &nbsp &nbsp<a href="{{ url_for('link') }}"> <input type="button" class="btn btn-sm btn-primary" value="Useful links"></a> </div>
+            <div id="footer" action=ìì> <i class="bi bi-brightness-high-fill" id="toggleDark"></i> <a href="{{ url_for('developers') }}"><input type="button" class="btn btn-sm btn-primary" value="Developers" action=ìì></a> &nbsp &nbsp &nbsp<a href="{{ url_for('link') }}"> <input type="button" class="btn btn-sm btn-primary" value="Useful links"></a>
+    </div>
  </body>
  </html>
