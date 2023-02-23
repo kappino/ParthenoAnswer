@@ -42,6 +42,12 @@ input{
 	flex-direction:row;
 	border:1px solid black;
 	border-radius: 18px;
+	position: absolute;
+	left: 0; 
+	right: 0; 
+	margin-left: auto; 
+	margin-right: auto; 
+	width: 310px; /* Need a specific value to work */
 }
 #footer {
 	text-align: center;
