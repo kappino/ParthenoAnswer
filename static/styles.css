@@ -7,13 +7,19 @@
 body {
     background-color: rgb(40, 67, 208);
 }
-
+#footer_txt{
+	color: white;
+	position: absolute;
+	left: 1%;
+}
 /* */
 #toggleDark{
 	color: white;
 	cursor: pointer;
 	position: absolute;
-	left: 1%;
+	left: 105px;
+	font-size: 28px;
+	top: -10%;
 }
 #logo {
 	width: 300px;
@@ -62,10 +68,11 @@ input{
 	position: fixed;
 	left: 0px;
 	bottom: 0px;
-	height: 30px;
+	height: 35px;
 	width: 100%;
 	box-shadow: 0 0 15px 0 rgba(0,0,0,.8) inset;
 }
+
 #menu {
 	border-top-left-radius:18px;
 	border-top-right-radius:18px;
