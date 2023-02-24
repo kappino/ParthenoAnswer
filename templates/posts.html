@@ -62,7 +62,7 @@
                        {% endfor %}
                        
                     </div>
-                    {% if session['username']%}
+                    {% if session['username'] %}
                     <button type="button" class="btn btn-primary"><a  href="{{ url_for('delete_post',id = post['_id'])}}" id="del">delete post</a></button>
                     {% endif %}
                   </div>
