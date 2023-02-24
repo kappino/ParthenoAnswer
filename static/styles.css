@@ -14,7 +14,7 @@
 	margin-top: -18px;
 	right: 1%;
 }
-.ml-3, #white{
+.ml-3, #white, #del{
 	color: var(--btn_white);
 }
 .pb-3{
