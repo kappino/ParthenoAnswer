@@ -11,6 +11,8 @@
     <script src="https://kit.fontawesome.com/7a0c032330.js" crossorigin="anonymous"></script>    
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script src="{{ url_for('static', filename='jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     {% block head %}
     {% endblock %}
     <title>ParthenopeAnswer - Community degli Studenti</title>
@@ -28,7 +30,8 @@
                 </form>             
           <div id="userbar">
             {% if session['username'] %}
-                Hello <a href="{{ url_for('profile') }}"><b>{{session['username']}}</b></a>. Not you? <a href="{{ url_for('sign_out')}}"><button class="btn btn-sm btn-primary">Sign out</button></a>
+            <h2><a href="{{ url_for('profile') }}"><i class="bi bi-person"></i></a></h2>
+            <a href="{{ url_for('sign_out')}}" id="sign"><button class="btn btn-sm btn-primary">Sign out</button></a>
             {% else %}
             <a href="{{ url_for('sign_in') }}"><button class="btn btn-sm btn-primary" >Sing In</button></a>
             {% endif %}
@@ -38,14 +41,16 @@
       </nav>
     <div id="wrapper">
     <div id="menu">
-          <button type="button" class="btn btn-sm btn-primary" style="margin-left: 30px;" onClick="history.back();" ><i class="fa-solid fa-arrow-left"></i> go back</button>
             <br><br>    
         </div>
         <div id="content">
     {% block body %}<!--commento di prova--> 
     {% endblock %}
         </div> <!--content-->
+
+        
     </div> <!--wrapper--> 
-    <a href="{{ url_for('developers') }}"><div id="footer" action=ìì>  <input type="button" class="btn btn-sm btn-primary" value="Developers" action=ìì></a> &nbsp &nbsp &nbsp<a href="{{ url_for('link') }}"> <input type="button" class="btn btn-sm btn-primary" value="Useful links"></a> </div>
+            <div class="footer" action=ìì><text style="top: 10%;" id="footer_txt">Dark mode:</text> <i class="bi bi-toggle-off" id="toggleDark"></i> <a href="{{ url_for('developers') }}"><input class="btn btn-sm btn-primary" value="Developers" action=ìì></a> &nbsp &nbsp &nbsp<a href="{{ url_for('link') }}"> <input class="btn btn-sm btn-primary" value="Useful links"></a>
+    </div>
  </body>
  </html>

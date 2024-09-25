@@ -237,6 +237,23 @@ def create_posts(subject):
         return "success"
     return render_template('create_posts.html') 
 
+@app.route('/delete_post/<string:id>', methods=['GET'])
+def delete_post(id):
+    post = db_posts.find_one({'_id': ObjectId(id)})
+    if not post:
+        return "Post not found", 404
+    
+    
+    
+    if post['authorId'] != session['_id'] and login_user['user_level'] == 0:
+        return "You do not have permission to delete this post", 403
+    
+    db_posts.delete_one({'_id': ObjectId(id)})
+    db_users.update_one({'_id': ObjectId(post['authorId'])}, { "$inc": { "n_posts" : -1 } })
+    
+    return render_template('create_posts.html') 
+
+    
 @app.route('/comments/<string:id>', methods=['GET','POST'])
 def comments(id):
     print("Id comments", id)
@@ -261,4 +278,4 @@ def link():
     return render_template('link.html')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port= 8000, debug=True)
